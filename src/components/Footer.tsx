@@ -46,21 +46,25 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Connect</h4>
             <div className="flex gap-4">
               <a 
-                href="#" 
+                href="https://github.com/Priyansh-Pathak" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-muted hover:bg-primary/10 hover:text-primary transition-all"
                 aria-label="GitHub"
               >
                 <Github className="w-5 h-5" />
               </a>
               <a 
-                href="#" 
+                href="https://www.linkedin.com/in/priyansh-pathak-503a1722b/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 rounded-lg bg-muted hover:bg-primary/10 hover:text-primary transition-all"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
-                href="mailto:priyansh@example.com" 
+                href="mailto:pripat1008@gmail.com" 
                 className="p-2 rounded-lg bg-muted hover:bg-primary/10 hover:text-primary transition-all"
                 aria-label="Email"
               >

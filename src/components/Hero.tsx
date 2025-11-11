@@ -71,7 +71,7 @@ const Hero = () => {
             {/* Stats */}
             <div className="flex flex-wrap gap-6">
               {[
-                { label: "Internships", value: "3+" },
+                { label: "Internships", value: "9+" },
                 { label: "Projects", value: "15+" },
                 { label: "Research", value: "AI/ML" },
               ].map((stat) => (
