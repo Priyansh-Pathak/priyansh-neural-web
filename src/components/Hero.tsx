@@ -1,35 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-neural-bg.jpg";
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0">
-        <img 
-          src={heroBg} 
-          alt="" 
-          className="w-full h-full object-cover opacity-30"
-        />
+        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
       </div>
 
       {/* Floating Particles Effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 6}s`,
-              animationDuration: `${4 + Math.random() * 4}s`,
-              opacity: 0.3 + Math.random() * 0.3,
-            }}
-          />
-        ))}
+        {[...Array(20)].map((_, i) => <div key={i} className="absolute w-1 h-1 bg-primary rounded-full animate-float" style={{
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 6}s`,
+        animationDuration: `${4 + Math.random() * 4}s`,
+        opacity: 0.3 + Math.random() * 0.3
+      }} />)}
       </div>
 
       {/* Content */}
@@ -62,40 +50,32 @@ const Hero = () => {
             </p>
 
             {/* Bio */}
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
-              Passionate CS undergraduate specializing in AI/ML. Experienced in responsive web applications 
-              and deploying AI models using industry-standard tools. Multiple internships and hackathons 
-              demonstrating adaptability and strong coding skills.
-            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">Passionate CS undergraduate specializing in AI/ML. Experienced in responsive web applications and deploying AI models using industry-standard tools. Multiple internships and hackathons demonstrating adaptability and strong coding skills.</p>
 
             {/* Stats */}
             <div className="flex flex-wrap gap-6">
-              {[
-                { label: "Internships", value: "9+" },
-                { label: "Projects", value: "15+" },
-                { label: "Research", value: "AI/ML" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
+              {[{
+              label: "Internships",
+              value: "9+"
+            }, {
+              label: "Projects",
+              value: "15+"
+            }, {
+              label: "Research",
+              value: "AI/ML"
+            }].map(stat => <div key={stat.label} className="text-center">
                   <div className="text-2xl font-bold text-primary">{stat.value}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
+                </div>)}
             </div>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4">
-              <Button 
-                size="lg" 
-                className="group bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/50 transition-all"
-              >
+              <Button size="lg" className="group bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/50 transition-all">
                 View Projects
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-primary/50 hover:bg-primary/10"
-              >
+              <Button size="lg" variant="outline" className="border-primary/50 hover:bg-primary/10">
                 <Download className="mr-2 w-4 h-4" />
                 Download Resume
               </Button>
@@ -123,7 +103,9 @@ const Hero = () => {
               <div className="absolute -top-4 -right-4 px-4 py-2 rounded-full bg-card/90 backdrop-blur-sm border border-primary/30 shadow-lg animate-float">
                 <span className="text-sm font-semibold text-primary">Python</span>
               </div>
-              <div className="absolute -bottom-4 -left-4 px-4 py-2 rounded-full bg-card/90 backdrop-blur-sm border border-neural-blue/30 shadow-lg animate-float" style={{ animationDelay: "1s" }}>
+              <div className="absolute -bottom-4 -left-4 px-4 py-2 rounded-full bg-card/90 backdrop-blur-sm border border-neural-blue/30 shadow-lg animate-float" style={{
+              animationDelay: "1s"
+            }}>
                 <span className="text-sm font-semibold text-neural-blue">TensorFlow</span>
               </div>
             </div>
@@ -137,8 +119,6 @@ const Hero = () => {
           <div className="w-1 h-3 bg-primary rounded-full animate-pulse" />
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
