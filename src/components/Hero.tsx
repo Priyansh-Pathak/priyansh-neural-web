@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Sparkles } from "lucide-react";
 import NeuralNetwork from "@/components/NeuralNetwork";
 import heroBg from "@/assets/hero-neural-bg.jpg";
-import profilePhoto from "@/assets/profile-photo.jpg";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
@@ -103,11 +102,9 @@ const Hero = () => {
               <div className="relative w-72 h-72 lg:w-96 lg:h-96">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-neural-blue to-secondary p-1">
                   <div className="w-full h-full rounded-full bg-card overflow-hidden">
-                    <img 
-                      src={profilePhoto} 
-                      alt="Priyansh Pathak" 
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="w-full h-full bg-gradient-to-br from-muted to-card flex items-center justify-center text-6xl font-bold text-primary">
+                      PP
+                    </div>
                   </div>
                 </div>
               </div>
