@@ -64,11 +64,28 @@ const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="group bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/50 transition-all">
+              <Button 
+                size="lg" 
+                className="group bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-primary/50 transition-all"
+                onClick={() => {
+                  const projectsSection = document.querySelector("#projects");
+                  projectsSection?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+              >
                 View Projects
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button size="lg" variant="outline" className="border-primary/50 hover:bg-primary/10">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-primary/50 hover:bg-primary/10"
+                onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = "/resume-priyansh-pathak.pdf";
+                  link.download = "Priyansh_Pathak_Resume.pdf";
+                  link.click();
+                }}
+              >
                 <Download className="mr-2 w-4 h-4" />
                 Download Resume
               </Button>
