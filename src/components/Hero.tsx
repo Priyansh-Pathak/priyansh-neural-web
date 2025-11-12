@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Sparkles } from "lucide-react";
+import NeuralNetwork from "@/components/NeuralNetwork";
 import heroBg from "@/assets/hero-neural-bg.jpg";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -9,16 +10,8 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
       </div>
 
-      {/* Floating Particles Effect */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => <div key={i} className="absolute w-1 h-1 bg-primary rounded-full animate-float" style={{
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 6}s`,
-        animationDuration: `${4 + Math.random() * 4}s`,
-        opacity: 0.3 + Math.random() * 0.3
-      }} />)}
-      </div>
+      {/* Neural Network Animation */}
+      <NeuralNetwork />
 
       {/* Content */}
       <div className="container relative z-10 px-6 lg:px-8">
