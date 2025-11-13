@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Sparkles } from "lucide-react";
 import NeuralNetwork from "@/components/NeuralNetwork";
 import heroBg from "@/assets/hero-neural-bg.jpg";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import profilePhoto from "@/assets/profile-photo.png";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
