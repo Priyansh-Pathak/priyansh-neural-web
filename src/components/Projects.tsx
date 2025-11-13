@@ -58,6 +58,25 @@ const Projects = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
+                
+                {/* Glassmorphism Hover Overlay */}
+                <div className="absolute inset-0 bg-background/80 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+                  <Button 
+                    size="sm" 
+                    className="bg-primary/90 hover:bg-primary shadow-lg"
+                  >
+                    <Github className="mr-2 w-4 h-4" />
+                    GitHub
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    className="border-primary/50 bg-card/50 backdrop-blur-sm hover:bg-primary/10"
+                  >
+                    <ExternalLink className="mr-2 w-4 h-4" />
+                    Demo
+                  </Button>
+                </div>
               </div>
 
               {/* Project Content */}
@@ -89,24 +108,6 @@ const Projects = () => {
                   ))}
                 </div>
 
-                {/* Actions */}
-                <div className="flex gap-3 pt-4">
-                  <Button 
-                    size="sm" 
-                    className="flex-1 bg-primary hover:bg-primary/90"
-                  >
-                    <Github className="mr-2 w-4 h-4" />
-                    GitHub
-                  </Button>
-                  <Button 
-                    size="sm" 
-                    variant="outline"
-                    className="flex-1 border-primary/50 hover:bg-primary/10"
-                  >
-                    <ExternalLink className="mr-2 w-4 h-4" />
-                    Demo
-                  </Button>
-                </div>
               </div>
             </Card>
           ))}
