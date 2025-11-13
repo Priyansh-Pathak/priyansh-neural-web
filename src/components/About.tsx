@@ -1,7 +1,10 @@
 import { GraduationCap, BookOpen } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const About = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   const education = [
     {
       institution: "SRM Institute of Science and Technology",
@@ -18,7 +21,13 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 px-6 lg:px-8 relative overflow-hidden">
+    <section 
+      ref={ref}
+      id="about" 
+      className={`py-24 px-6 lg:px-8 relative overflow-hidden transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
       <div className="container max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">

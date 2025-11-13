@@ -1,11 +1,14 @@
 import { ExternalLink, Github } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import projectAttendance from "@/assets/project-attendance.jpg";
 import projectStoryteller from "@/assets/project-storyteller.jpg";
 import projectFaceRecog from "@/assets/project-facerecog.jpg";
 
 const Projects = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   const projects = [
     {
       title: "AI-Powered Video Attendance System",
@@ -31,7 +34,13 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-24 px-6 lg:px-8 bg-muted/30">
+    <section 
+      ref={ref}
+      id="projects" 
+      className={`py-24 px-6 lg:px-8 bg-muted/30 transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
       <div className="container max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">

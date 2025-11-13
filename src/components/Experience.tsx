@@ -1,7 +1,10 @@
 import { Briefcase, Calendar } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Card } from "@/components/ui/card";
 
 const Experience = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   const experiences = [
     {
       title: "Research Intern",
@@ -38,7 +41,13 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-24 px-6 lg:px-8 bg-muted/30">
+    <section 
+      ref={ref}
+      id="experience" 
+      className={`py-24 px-6 lg:px-8 bg-muted/30 transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
       <div className="container max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">

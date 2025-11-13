@@ -5,8 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Contact = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -24,7 +26,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 lg:px-8 relative overflow-hidden">
+    <section 
+      ref={ref}
+      id="contact" 
+      className={`py-24 px-6 lg:px-8 relative overflow-hidden transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
       <div className="container max-w-5xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
