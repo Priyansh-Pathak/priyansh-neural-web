@@ -80,14 +80,6 @@ const Hero = () => {
                 size="lg" 
                 variant="outline" 
                 className="border-primary/50 hover:bg-primary/10"
-                onClick={() => window.open("https://online.flippingbook.com/view/796388929/", "_blank")}
-              >
-                View Resume
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-primary/50 hover:bg-primary/10"
                 onClick={() => {
                   const link = document.createElement("a");
                   link.href = "/resume-priyansh-pathak.pdf";

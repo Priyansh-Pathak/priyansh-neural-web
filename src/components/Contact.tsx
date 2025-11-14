@@ -6,7 +6,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -16,38 +15,14 @@ const Contact = () => {
     email: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      await emailjs.send(
-        'service_2kfszee',
-        'template_kd3n7tc',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-        },
-        'U85-nMUV6KmM-D1fd'
-      );
-
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-      setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      toast({
-        title: "Failed to send message",
-        description: "Please try again or contact me directly via email.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    toast({
+      title: "Message sent!",
+      description: "Thank you for reaching out. I'll get back to you soon.",
+    });
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
@@ -170,12 +145,11 @@ const Contact = () => {
 
               <Button 
                 type="submit" 
-                disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                 size="lg"
               >
                 <Send className="mr-2 w-4 h-4" />
-                {isSubmitting ? "Sending..." : "Send Message"}
+                Send Message
               </Button>
             </form>
           </Card>
