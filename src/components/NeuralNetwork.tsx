@@ -54,12 +54,15 @@ const NeuralNetwork = () => {
         if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
         if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
 
-        // Draw node
+        // Draw enhanced node with gradient
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = "hsl(189, 94%, 55%)";
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "hsl(189, 94%, 55%)";
+        ctx.arc(node.x, node.y, 3, 0, Math.PI * 2);
+        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 3);
+        gradient.addColorStop(0, "hsl(180, 100%, 50%)");
+        gradient.addColorStop(1, "hsl(280, 90%, 65%)");
+        ctx.fillStyle = gradient;
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = "hsl(180, 100%, 50%)";
         ctx.fill();
         ctx.shadowBlur = 0;
       });
@@ -72,13 +75,20 @@ const NeuralNetwork = () => {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < connectionDistance) {
-            const opacity = (1 - distance / connectionDistance) * 0.3;
+            const opacity = (1 - distance / connectionDistance) * 0.4;
+            const lineGradient = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y);
+            lineGradient.addColorStop(0, `hsla(180, 100%, 50%, ${opacity})`);
+            lineGradient.addColorStop(0.5, `hsla(280, 90%, 65%, ${opacity})`);
+            lineGradient.addColorStop(1, `hsla(180, 100%, 50%, ${opacity})`);
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `hsla(189, 94%, 55%, ${opacity})`;
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = lineGradient;
+            ctx.lineWidth = 1;
+            ctx.shadowBlur = 5;
+            ctx.shadowColor = `hsla(180, 100%, 50%, ${opacity * 0.5})`;
             ctx.stroke();
+            ctx.shadowBlur = 0;
           }
         }
       }
@@ -97,7 +107,7 @@ const NeuralNetwork = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none opacity-40"
+      className="absolute inset-0 pointer-events-none opacity-60"
     />
   );
 };
