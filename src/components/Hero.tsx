@@ -60,10 +60,6 @@ const Hero = () => {
               label: "Projects",
               value: "15+",
               color: "neon-purple"
-            }, {
-              label: "Research Area",
-              value: "AI/ML",
-              color: "neon-magenta"
             }].map(stat => <div key={stat.label} className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
                   <div className="relative px-6 py-4 rounded-xl border border-neon-cyan/30 bg-card/50 backdrop-blur-sm hover:border-neon-cyan/60 transition-all duration-300">
@@ -112,40 +108,33 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Enhanced Profile Image */}
-          <div className="relative flex justify-center lg:justify-end animate-fade-in-up">
+          {/* Classy Glass Morphism Profile Image */}
+          <div className="relative flex justify-center lg:justify-end animate-fade-in">
             <div className="relative group">
-              {/* Enhanced Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta rounded-full blur-[80px] opacity-40 group-hover:opacity-70 group-hover:blur-[100px] transition-all duration-500 animate-glow-pulse" />
+              {/* Subtle ambient glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/20 via-neon-purple/20 to-neon-magenta/20 rounded-3xl blur-[60px] opacity-50 transition-opacity duration-500" />
               
-              {/* Image Container with animated border */}
-              <div className="relative w-72 h-72 lg:w-96 lg:h-96">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-neon-cyan via-neon-purple to-neon-magenta p-1 animate-border-flow" style={{ backgroundSize: "200% 200%" }}>
-                  <div className="w-full h-full rounded-full bg-card overflow-hidden ring-2 ring-neon-cyan/30">
+              {/* Glass morphism container */}
+              <div className="relative w-80 h-80 lg:w-96 lg:h-96">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden">
+                  {/* Inner glow border */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-neon-cyan/10 via-transparent to-neon-purple/10" />
+                  
+                  {/* Image */}
+                  <div className="absolute inset-2 rounded-2xl overflow-hidden">
                     <img 
                       src={profilePhoto} 
-                      alt="Priyansh Pathak" 
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                      alt="Priyansh Pathak - AI/ML Engineer" 
+                      className="w-full h-full object-cover"
                     />
+                    {/* Subtle overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                   </div>
                 </div>
-                {/* Orbiting ring effect */}
-                <div className="absolute inset-0 rounded-full border-2 border-dashed border-neon-cyan/20 animate-spin" style={{ animationDuration: "20s" }} />
-              </div>
 
-              {/* Enhanced Floating Tech Badges */}
-              <div className="absolute -top-4 -right-4 px-5 py-2.5 rounded-full bg-gradient-to-r from-neon-cyan/20 to-neon-blue/20 backdrop-blur-md border border-neon-cyan/50 shadow-[0_0_25px_rgba(0,255,255,0.5)] animate-float hover:shadow-[0_0_40px_rgba(0,255,255,0.8)] transition-all duration-300">
-                <span className="text-sm font-bold text-neon-cyan">Python</span>
-              </div>
-              <div className="absolute -bottom-4 -left-4 px-5 py-2.5 rounded-full bg-gradient-to-r from-neon-purple/20 to-neon-magenta/20 backdrop-blur-md border border-neon-purple/50 shadow-[0_0_25px_rgba(168,85,247,0.5)] animate-float hover:shadow-[0_0_40px_rgba(168,85,247,0.8)] transition-all duration-300" style={{
-              animationDelay: "1s"
-            }}>
-                <span className="text-sm font-bold text-neon-purple">TensorFlow</span>
-              </div>
-              <div className="absolute top-1/2 -left-8 px-4 py-2 rounded-full bg-gradient-to-r from-neon-green/20 to-neon-cyan/20 backdrop-blur-md border border-neon-green/50 shadow-[0_0_20px_rgba(0,255,127,0.5)] animate-float hover:shadow-[0_0_35px_rgba(0,255,127,0.8)] transition-all duration-300" style={{
-              animationDelay: "2s"
-            }}>
-                <span className="text-sm font-bold text-neon-green">AI/ML</span>
+                {/* Minimal accent corners */}
+                <div className="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-neon-cyan/40 rounded-tl-lg" />
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-neon-purple/40 rounded-br-lg" />
               </div>
             </div>
           </div>
@@ -154,8 +143,8 @@ const Hero = () => {
 
       {/* Enhanced Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-7 h-12 rounded-full border-2 border-neon-cyan/60 flex items-start justify-center p-2 shadow-[0_0_15px_rgba(0,255,255,0.4)] hover:shadow-[0_0_25px_rgba(0,255,255,0.6)] transition-all duration-300">
-          <div className="w-1.5 h-4 bg-gradient-to-b from-neon-cyan to-neon-purple rounded-full animate-pulse shadow-[0_0_10px_rgba(0,255,255,0.8)]" />
+        <div className="w-6 h-10 rounded-full border-2 border-neon-cyan/50 flex justify-center p-2 backdrop-blur-sm bg-card/20 shadow-[0_0_20px_rgba(0,255,255,0.3)]">
+          <div className="w-1.5 h-3 bg-gradient-to-b from-neon-cyan to-transparent rounded-full animate-pulse" />
         </div>
       </div>
     </section>;

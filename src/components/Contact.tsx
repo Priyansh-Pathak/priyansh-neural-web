@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import emailjs from '@emailjs/browser';
+import GlitchText from "@/components/GlitchText";
 
 const Contact = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -63,11 +64,9 @@ const Contact = () => {
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             Let's Build Something{" "}
-            <span className="bg-gradient-to-r from-primary to-neural-blue bg-clip-text text-transparent">
-              Intelligent
-            </span>
+            <GlitchText text="Intelligent" className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent" />
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-primary to-neural-blue rounded-full mx-auto" />
+          <div className="h-1 w-20 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full mx-auto shadow-[0_0_20px_rgba(0,255,255,0.5)]" />
           <p className="text-muted-foreground mt-4">
             Have a project in mind? Let's collaborate and create something amazing.
           </p>
