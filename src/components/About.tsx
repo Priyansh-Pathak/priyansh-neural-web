@@ -1,6 +1,7 @@
 import { GraduationCap, BookOpen } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import GlitchText from "@/components/GlitchText";
 
 const About = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -41,7 +42,7 @@ const About = () => {
             <span className="text-sm font-semibold bg-gradient-to-r from-neon-purple to-neon-magenta bg-clip-text text-transparent">My Journey</span>
           </div>
           <h2 className="text-5xl lg:text-6xl font-bold mb-6">
-            About <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent animate-neon-glow">Me</span>
+            About <GlitchText text="Me" className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent" />
           </h2>
           <div className="h-1.5 w-32 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta rounded-full mx-auto shadow-[0_0_20px_rgba(168,85,247,0.5)] animate-border-flow" style={{ backgroundSize: "200% 200%" }} />
         </div>

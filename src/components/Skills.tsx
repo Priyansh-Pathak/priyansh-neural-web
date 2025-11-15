@@ -1,7 +1,10 @@
 import { Code2, Globe, Wrench, Cpu } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import GlitchText from "@/components/GlitchText";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Skills = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const skillCategories = [
     {
       title: "Languages",
@@ -30,7 +33,13 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 px-6 lg:px-8 relative overflow-hidden">
+    <section 
+      ref={ref} 
+      id="skills" 
+      className={`py-24 px-6 lg:px-8 relative overflow-hidden transition-all duration-1000 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+    >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[120px] animate-pulse" />
@@ -45,7 +54,7 @@ const Skills = () => {
             <span className="text-sm font-semibold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">Tech Arsenal</span>
           </div>
           <h2 className="text-5xl lg:text-6xl font-bold mb-6">
-            Technical <span className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent animate-neon-glow">Skills</span>
+            Technical <GlitchText text="Skills" className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent" />
           </h2>
           <div className="h-1.5 w-32 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta rounded-full mx-auto shadow-[0_0_20px_rgba(0,255,255,0.5)] animate-border-flow" style={{ backgroundSize: "200% 200%" }} />
           <p className="text-muted-foreground mt-6 text-lg max-w-2xl mx-auto">
@@ -60,11 +69,11 @@ const Skills = () => {
             return (
               <Card 
                 key={index}
-                className="group relative p-8 bg-gradient-to-br from-card/60 via-card/40 to-card/60 backdrop-blur-xl border border-neon-cyan/20 hover:border-neon-cyan/60 transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,255,255,0.3)] animate-scale-in overflow-hidden"
-                style={{ animationDelay: `${index * 0.15}s` }}
+                className="group relative p-8 bg-gradient-to-br from-card/60 via-card/40 to-card/60 backdrop-blur-xl border border-neon-cyan/20 hover:border-neon-cyan/60 transition-all duration-500 hover:shadow-[0_0_50px_rgba(0,255,255,0.4)] animate-scale-in overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-neon-cyan/5 before:via-transparent before:to-neon-purple/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
-                {/* Animated Gradient Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-neon-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Holographic shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 
                 {/* Glow Effect */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan/20 to-neon-purple/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 -z-10" />
@@ -83,13 +92,12 @@ const Skills = () => {
 
                   {/* Enhanced Skills Pills */}
                   <div className="flex flex-wrap gap-3">
-                    {category.skills.map((skill, i) => (
+                    {category.skills.map((skill, skillIndex) => (
                       <span 
-                        key={i}
-                        className="group/pill relative px-5 py-2.5 rounded-lg bg-gradient-to-r from-muted/80 to-muted/60 backdrop-blur-sm border border-border/50 hover:border-neon-cyan/50 text-sm font-semibold hover:text-neon-cyan transition-all duration-300 cursor-default hover:shadow-[0_0_15px_rgba(0,255,255,0.3)] hover:scale-105"
+                        key={skillIndex}
+                        className="px-4 py-2 rounded-lg bg-gradient-to-br from-muted/80 to-muted/40 backdrop-blur-sm border border-neon-cyan/20 text-sm font-medium hover:border-neon-cyan/50 hover:shadow-[0_0_20px_rgba(0,255,255,0.4)] transition-all duration-300 hover:scale-105 cursor-default relative overflow-hidden group/badge before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-neon-cyan/20 before:to-transparent before:-translate-x-full hover:before:translate-x-full before:transition-transform before:duration-700"
                       >
                         <span className="relative z-10">{skill}</span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 rounded-lg opacity-0 group-hover/pill:opacity-100 transition-opacity duration-300" />
                       </span>
                     ))}
                   </div>

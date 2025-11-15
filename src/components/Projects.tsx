@@ -2,6 +2,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import GlitchText from "@/components/GlitchText";
 import projectAttendance from "@/assets/project-attendance.jpg";
 import projectStoryteller from "@/assets/project-storyteller.jpg";
 import projectFaceRecog from "@/assets/project-facerecog.jpg";
@@ -45,9 +46,9 @@ const Projects = () => {
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Featured <span className="bg-gradient-to-r from-primary to-neural-blue bg-clip-text text-transparent">Projects</span>
+            Featured <GlitchText text="Projects" className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent" />
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-primary to-neural-blue rounded-full mx-auto" />
+          <div className="h-1 w-20 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full mx-auto shadow-[0_0_20px_rgba(0,255,255,0.5)]" />
           <p className="text-muted-foreground mt-4">Building intelligent solutions from research to production</p>
         </div>
 
@@ -56,8 +57,8 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card 
               key={index}
-              className="overflow-hidden bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/10 group animate-scale-in"
-              style={{ animationDelay: `${index * 0.15}s` }}
+              className="overflow-hidden bg-gradient-to-br from-card/60 to-card/30 backdrop-blur-xl border border-neon-cyan/20 hover:border-neon-cyan/60 transition-all duration-500 hover:shadow-[0_0_50px_rgba(0,255,255,0.3)] group animate-scale-in relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-neon-cyan/5 before:via-transparent before:to-neon-purple/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+              style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden bg-muted">
