@@ -61,7 +61,7 @@ const Hero = () => {
               value: "15+",
               color: "neon-purple"
             }, {
-              label: "Research",
+              label: "Research Area",
               value: "AI/ML",
               color: "neon-magenta"
             }].map(stat => <div key={stat.label} className="relative group">
