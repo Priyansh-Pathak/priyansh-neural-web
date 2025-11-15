@@ -7,10 +7,12 @@ import Projects from "@/components/Projects";
 import GitHub from "@/components/GitHub";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ParticlesBackground from "@/components/ParticlesBackground";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <ParticlesBackground />
       <Navigation />
       <section id="hero">
         <Hero />
