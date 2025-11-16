@@ -50,7 +50,7 @@ const Projects = () => {
     >
       <div className="container max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
             Featured Projects
           </h2>
@@ -63,8 +63,8 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card 
               key={index}
-              className="overflow-hidden bg-gradient-to-br from-card/60 to-card/30 backdrop-blur-xl border border-neon-cyan/20 hover:border-neon-cyan/60 transition-all duration-500 hover:shadow-[0_0_50px_rgba(0,255,255,0.3)] group animate-scale-in relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-neon-cyan/5 before:via-transparent before:to-neon-purple/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className="overflow-hidden bg-gradient-to-br from-card/60 to-card/30 backdrop-blur-xl border border-neon-cyan/20 hover:border-neon-cyan/60 transition-all duration-500 hover:shadow-[0_0_50px_rgba(0,255,255,0.3)] group opacity-0 animate-scale-in relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-neon-cyan/5 before:via-transparent before:to-neon-purple/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+              style={{ animationDelay: `${0.3 + index * 0.2}s`, animationFillMode: "forwards" }}
             >
               {/* Project Image */}
               <div className="relative h-48 overflow-hidden bg-muted">

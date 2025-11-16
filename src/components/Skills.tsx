@@ -49,7 +49,7 @@ const Skills = () => {
 
       <div className="container max-w-6xl mx-auto relative z-10">
         {/* Enhanced Section Header */}
-        <div className="text-center mb-20 animate-fade-in">
+        <div className="text-center mb-20 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
           <div className="inline-block mb-4 px-6 py-2 rounded-full bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 backdrop-blur-sm border border-neon-cyan/30">
             <span className="text-sm font-semibold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">Tech Arsenal</span>
           </div>
@@ -69,8 +69,8 @@ const Skills = () => {
             return (
               <Card 
                 key={index}
-                className="group relative p-8 bg-gradient-to-br from-card/60 via-card/40 to-card/60 backdrop-blur-xl border border-neon-cyan/20 hover:border-neon-cyan/60 transition-all duration-500 hover:shadow-[0_0_50px_rgba(0,255,255,0.4)] animate-scale-in overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-neon-cyan/5 before:via-transparent before:to-neon-purple/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className="group relative p-8 bg-gradient-to-br from-card/60 via-card/40 to-card/60 backdrop-blur-xl border border-neon-cyan/20 hover:border-neon-cyan/60 transition-all duration-500 hover:shadow-[0_0_50px_rgba(0,255,255,0.4)] opacity-0 animate-scale-in overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-br before:from-neon-cyan/5 before:via-transparent before:to-neon-purple/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+                style={{ animationDelay: `${0.3 + index * 0.15}s`, animationFillMode: "forwards" }}
               >
                 {/* Holographic shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
