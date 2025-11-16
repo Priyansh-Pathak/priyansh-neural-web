@@ -1,6 +1,6 @@
 import { Code2, Globe, Wrench, Cpu } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import GlitchText from "@/components/GlitchText";
+
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Skills = () => {
@@ -53,8 +53,8 @@ const Skills = () => {
           <div className="inline-block mb-4 px-6 py-2 rounded-full bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 backdrop-blur-sm border border-neon-cyan/30">
             <span className="text-sm font-semibold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">Tech Arsenal</span>
           </div>
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6">
-            Technical <GlitchText text="Skills" className="bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent" />
+          <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
+            Technical Skills
           </h2>
           <div className="h-1.5 w-32 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta rounded-full mx-auto shadow-[0_0_20px_rgba(0,255,255,0.5)] animate-border-flow" style={{ backgroundSize: "200% 200%" }} />
           <p className="text-muted-foreground mt-6 text-lg max-w-2xl mx-auto">

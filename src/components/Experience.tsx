@@ -1,7 +1,7 @@
 import { Briefcase, Calendar } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Card } from "@/components/ui/card";
-import GlitchText from "@/components/GlitchText";
+
 
 const Experience = () => {
   const { ref, isVisible } = useScrollAnimation();
@@ -52,8 +52,8 @@ const Experience = () => {
       <div className="container max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Work <GlitchText text="Experience" className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent" />
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
+            Work Experience
           </h2>
           <div className="h-1 w-20 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full mx-auto shadow-[0_0_20px_rgba(0,255,255,0.5)]" />
         </div>
