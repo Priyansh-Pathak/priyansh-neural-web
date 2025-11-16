@@ -108,20 +108,20 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Classy Glass Morphism Profile Image */}
+          {/* Round Profile Photo with Glass Morphism */}
           <div className="relative flex justify-center lg:justify-end animate-fade-in">
             <div className="relative group">
               {/* Subtle ambient glow with fade effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/30 via-neon-purple/20 to-transparent rounded-3xl blur-[80px] opacity-60 animate-pulse" style={{ animationDuration: '4s' }} />
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/30 via-neon-purple/20 to-transparent rounded-full blur-[80px] opacity-60 animate-pulse" style={{ animationDuration: '4s' }} />
               
-              {/* Glass morphism container */}
+              {/* Glass morphism container - Round */}
               <div className="relative w-80 h-80 lg:w-96 lg:h-96">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-neon-cyan/5 via-background/40 to-neon-purple/5 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-neon-cyan/5 via-background/40 to-neon-purple/5 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden">
                   {/* Inner glow border - static, no animation */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-neon-cyan/5 via-transparent to-neon-purple/5" />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-neon-cyan/5 via-transparent to-neon-purple/5" />
                   
                   {/* Image */}
-                  <div className="absolute inset-2 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-2 rounded-full overflow-hidden">
                     <img 
                       src={profilePhoto} 
                       alt="Priyansh Pathak - AI/ML Engineer" 
