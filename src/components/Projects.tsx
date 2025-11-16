@@ -2,7 +2,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import GlitchText from "@/components/GlitchText";
+
 import projectAttendance from "@/assets/project-attendance.jpg";
 import projectStoryteller from "@/assets/project-storyteller.jpg";
 import projectFaceRecog from "@/assets/project-facerecog.jpg";
@@ -45,8 +45,8 @@ const Projects = () => {
       <div className="container max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            Featured <GlitchText text="Projects" className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent" />
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
+            Featured Projects
           </h2>
           <div className="h-1 w-20 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full mx-auto shadow-[0_0_20px_rgba(0,255,255,0.5)]" />
           <p className="text-muted-foreground mt-4">Building intelligent solutions from research to production</p>

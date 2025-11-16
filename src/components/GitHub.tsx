@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Github, Star, GitFork, ExternalLink, Calendar, GitCommit } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import GlitchText from "@/components/GlitchText";
+
 
 interface GitHubRepo {
   id: number;
@@ -104,8 +104,8 @@ const GitHub = () => {
       <div className="container max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            GitHub <GlitchText text="Activity" className="bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent" />
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
+            GitHub Activity
           </h2>
           <div className="h-1 w-20 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full mx-auto shadow-[0_0_20px_rgba(0,255,255,0.5)]" />
           <p className="text-muted-foreground mt-4">Real-time data from my GitHub profile</p>

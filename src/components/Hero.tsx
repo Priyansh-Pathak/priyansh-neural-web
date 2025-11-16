@@ -111,14 +111,14 @@ const Hero = () => {
           {/* Classy Glass Morphism Profile Image */}
           <div className="relative flex justify-center lg:justify-end animate-fade-in">
             <div className="relative group">
-              {/* Subtle ambient glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/20 via-neon-purple/20 to-neon-magenta/20 rounded-3xl blur-[60px] opacity-50 transition-opacity duration-500" />
+              {/* Subtle ambient glow with fade effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/30 via-neon-purple/20 to-transparent rounded-3xl blur-[80px] opacity-60 animate-pulse" style={{ animationDuration: '4s' }} />
               
               {/* Glass morphism container */}
               <div className="relative w-80 h-80 lg:w-96 lg:h-96">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 shadow-2xl overflow-hidden">
-                  {/* Inner glow border */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-neon-cyan/10 via-transparent to-neon-purple/10" />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-neon-cyan/5 via-background/40 to-neon-purple/5 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden">
+                  {/* Inner glow border - static, no animation */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-neon-cyan/5 via-transparent to-neon-purple/5" />
                   
                   {/* Image */}
                   <div className="absolute inset-2 rounded-2xl overflow-hidden">
@@ -127,22 +127,22 @@ const Hero = () => {
                       alt="Priyansh Pathak - AI/ML Engineer" 
                       className="w-full h-full object-cover"
                     />
-                    {/* Subtle overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                    {/* Subtle overlay with fade */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
                   </div>
                 </div>
 
-                {/* Minimal accent corners */}
-                <div className="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-neon-cyan/40 rounded-tl-lg" />
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-neon-purple/40 rounded-br-lg" />
+                {/* Minimal accent corners - static, no animation */}
+                <div className="absolute -top-2 -left-2 w-10 h-10 border-l-2 border-t-2 border-neon-cyan/30 rounded-tl-xl" />
+                <div className="absolute -bottom-2 -right-2 w-10 h-10 border-r-2 border-b-2 border-neon-purple/30 rounded-br-xl" />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Enhanced Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      {/* Enhanced Scroll Indicator - Very Slow Bounce */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-[bounce_3s_ease-in-out_infinite]">
         <div className="w-6 h-10 rounded-full border-2 border-neon-cyan/50 flex justify-center p-2 backdrop-blur-sm bg-card/20 shadow-[0_0_20px_rgba(0,255,255,0.3)]">
           <div className="w-1.5 h-3 bg-gradient-to-b from-neon-cyan to-transparent rounded-full animate-pulse" />
         </div>
