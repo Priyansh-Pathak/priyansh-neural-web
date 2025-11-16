@@ -61,7 +61,7 @@ const Contact = () => {
     >
       <div className="container max-w-5xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
             Let's Build Something Intelligent
           </h2>
@@ -73,7 +73,7 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Info */}
-          <div className="space-y-6 animate-fade-in-up">
+          <div className="space-y-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
             <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all group">
               <div className="flex items-center gap-4">
                 <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
@@ -129,7 +129,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 animate-fade-in-up">
+          <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 opacity-0 animate-fade-in" style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="text-sm font-medium mb-2 block">Name</label>

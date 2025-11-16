@@ -9,6 +9,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import ParallaxBackground from "@/components/ParallaxBackground";
+import FloatingActionButton from "@/components/FloatingActionButton";
 
 const Index = () => {
   return (
@@ -38,6 +39,7 @@ const Index = () => {
         <Contact />
       </section>
       <Footer />
+      <FloatingActionButton />
     </div>
   );
 };

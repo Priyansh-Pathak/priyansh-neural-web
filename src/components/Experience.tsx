@@ -51,7 +51,7 @@ const Experience = () => {
     >
       <div className="container max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
             Work Experience
           </h2>
@@ -70,8 +70,8 @@ const Experience = () => {
                 key={index}
                 className={`relative flex items-center ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } animate-fade-in-up`}
-                style={{ animationDelay: `${index * 0.2}s` }}
+                } opacity-0 animate-fade-in`}
+                style={{ animationDelay: `${0.3 + index * 0.2}s`, animationFillMode: "forwards" }}
               >
                 {/* Timeline Dot */}
                 <div className="absolute left-0 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/50 z-10" />

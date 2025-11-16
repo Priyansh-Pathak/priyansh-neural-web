@@ -37,7 +37,7 @@ const About = () => {
 
       <div className="container max-w-6xl mx-auto relative z-10">
         {/* Enhanced Section Header */}
-        <div className="text-center mb-20 animate-fade-in">
+        <div className="text-center mb-20 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
           <div className="inline-block mb-4 px-6 py-2 rounded-full bg-gradient-to-r from-neon-purple/10 to-neon-magenta/10 backdrop-blur-sm border border-neon-purple/30">
             <span className="text-sm font-semibold bg-gradient-to-r from-neon-purple to-neon-magenta bg-clip-text text-transparent">My Journey</span>
           </div>
@@ -48,7 +48,7 @@ const About = () => {
         </div>
 
         {/* Enhanced Bio */}
-        <div className="mb-20 max-w-3xl mx-auto animate-fade-in-up">
+        <div className="mb-20 max-w-3xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
           <div className="relative p-8 rounded-2xl bg-gradient-to-br from-card/60 via-card/40 to-card/60 backdrop-blur-xl border border-neon-cyan/20 shadow-[0_0_40px_rgba(0,255,255,0.2)]">
             <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-neon-purple/5 rounded-2xl" />
             <p className="relative text-lg text-foreground/90 leading-relaxed text-center">
@@ -62,7 +62,7 @@ const About = () => {
 
         {/* Enhanced Education Timeline */}
         <div className="space-y-8">
-          <div className="flex items-center justify-center gap-3 mb-12">
+          <div className="flex items-center justify-center gap-3 mb-12 opacity-0 animate-fade-in" style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}>
             <div className="p-3 rounded-xl bg-gradient-to-br from-neon-purple/20 to-neon-magenta/20 backdrop-blur-sm border border-neon-purple/30">
               <GraduationCap className="w-7 h-7 text-neon-purple" />
             </div>
@@ -73,8 +73,8 @@ const About = () => {
             {education.map((edu, index) => (
               <Card 
                 key={index} 
-                className="group relative p-8 bg-gradient-to-br from-card/60 via-card/40 to-card/60 backdrop-blur-xl border border-neon-purple/20 hover:border-neon-purple/60 transition-all duration-500 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)] animate-scale-in overflow-hidden"
-                style={{ animationDelay: `${index * 0.15}s` }}
+                className="group relative p-8 bg-gradient-to-br from-card/60 via-card/40 to-card/60 backdrop-blur-xl border border-neon-purple/20 hover:border-neon-purple/60 transition-all duration-500 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)] opacity-0 animate-scale-in overflow-hidden"
+                style={{ animationDelay: `${0.7 + index * 0.15}s`, animationFillMode: "forwards" }}
               >
                 {/* Glow Effect */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-neon-purple/20 to-neon-magenta/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 -z-10" />
