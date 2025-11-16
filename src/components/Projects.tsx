@@ -17,6 +17,8 @@ const Projects = () => {
       tech: ["Python", "Flask", "TensorFlow", "Keras", "OpenCV", "MTCNN"],
       image: projectAttendance,
       highlight: "Research-oriented pipeline with automated detection & matching",
+      github: "https://github.com/Priyansh-Pathak",
+      demo: "#",
     },
     {
       title: "Smart Cultural Storyteller",
@@ -24,6 +26,8 @@ const Projects = () => {
       tech: ["Python", "Streamlit", "Generative AI", "Image Processing"],
       image: projectStoryteller,
       highlight: "Combines computer vision with cultural knowledge",
+      github: "https://github.com/Priyansh-Pathak",
+      demo: "#",
     },
     {
       title: "Face Recognition Attendance System",
@@ -31,6 +35,8 @@ const Projects = () => {
       tech: ["Python", "Tkinter", "OpenCV", "CSV"],
       image: projectFaceRecog,
       highlight: "User-friendly GUI with secure training module",
+      github: "https://github.com/Priyansh-Pathak",
+      demo: "#",
     },
   ];
 
@@ -74,18 +80,22 @@ const Projects = () => {
                   <Button 
                     size="sm" 
                     className="bg-primary/90 hover:bg-primary shadow-lg"
+                    onClick={() => window.open(project.github, "_blank")}
                   >
                     <Github className="mr-2 w-4 h-4" />
                     GitHub
                   </Button>
-                  <Button 
-                    size="sm" 
-                    variant="outline"
-                    className="border-primary/50 bg-card/50 backdrop-blur-sm hover:bg-primary/10"
-                  >
-                    <ExternalLink className="mr-2 w-4 h-4" />
-                    Demo
-                  </Button>
+                  {project.demo !== "#" && (
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      className="border-primary/50 bg-card/50 backdrop-blur-sm hover:bg-primary/10"
+                      onClick={() => window.open(project.demo, "_blank")}
+                    >
+                      <ExternalLink className="mr-2 w-4 h-4" />
+                      Demo
+                    </Button>
+                  )}
                 </div>
               </div>
 
@@ -129,6 +139,7 @@ const Projects = () => {
             size="lg" 
             variant="outline"
             className="border-primary/50 hover:bg-primary/10"
+            onClick={() => window.open("https://github.com/Priyansh-Pathak", "_blank")}
           >
             <Github className="mr-2 w-5 h-5" />
             View All Projects on GitHub

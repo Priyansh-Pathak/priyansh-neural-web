@@ -8,10 +8,12 @@ import GitHub from "@/components/GitHub";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ParticlesBackground from "@/components/ParticlesBackground";
+import ParallaxBackground from "@/components/ParallaxBackground";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <ParallaxBackground />
       <ParticlesBackground />
       <Navigation />
       <section id="hero">
