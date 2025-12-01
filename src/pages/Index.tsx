@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import ParallaxBackground from "@/components/ParallaxBackground";
 import FloatingActionButton from "@/components/FloatingActionButton";
-import CustomCursor from "@/components/CustomCursor";
+
 import LoadingScreen from "@/components/LoadingScreen";
 import ScrollProgressIndicator from "@/components/ScrollProgressIndicator";
 
@@ -54,9 +54,8 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground cursor-none">
+    <div className="min-h-screen bg-background text-foreground">
       <LoadingScreen />
-      <CustomCursor />
       <ScrollProgressIndicator />
       <ParallaxBackground />
       <ParticlesBackground />

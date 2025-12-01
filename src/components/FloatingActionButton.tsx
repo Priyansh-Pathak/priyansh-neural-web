@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { FileDown, Github, Mail, X, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const FloatingActionButton = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const actions = [
     {
       icon: FileDown,
-      label: "Download Resume",
+      label: "View Resume",
       onClick: () => {
-        window.open("/resume-priyansh-pathak.pdf", "_blank");
+        navigate("/resume");
       },
       color: "from-neon-cyan to-neon-purple",
     },
