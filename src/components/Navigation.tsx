@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
+import { useToast } from "@/hooks/use-toast";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { toast } = useToast();
 
   const navLinks = [
     { name: "Home", href: "#hero" },
@@ -33,6 +35,16 @@ const Navigation = () => {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
       setIsMobileMenuOpen(false);
     }
+  };
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    toast({
+      title: `${newTheme === "dark" ? "🌙" : "☀️"} ${newTheme === "dark" ? "Dark" : "Light"} mode activated`,
+      description: `Theme preference saved automatically`,
+      duration: 2000,
+    });
   };
 
   return (
@@ -68,12 +80,14 @@ const Navigation = () => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="ml-2"
+              onClick={toggleTheme}
+              className="ml-2 relative group"
+              title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
+              <div className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300" />
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all duration-500 dark:-rotate-90 dark:scale-0 relative z-10" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all duration-500 dark:rotate-0 dark:scale-100 z-10" />
+              <span className="sr-only">Toggle theme (Current: {theme})</span>
             </Button>
           </div>
 
@@ -82,11 +96,14 @@ const Navigation = () => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onClick={toggleTheme}
+              className="relative group"
+              title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
+              <div className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300" />
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all duration-500 dark:-rotate-90 dark:scale-0 relative z-10" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all duration-500 dark:rotate-0 dark:scale-100 z-10" />
+              <span className="sr-only">Toggle theme (Current: {theme})</span>
             </Button>
             <Button
               variant="ghost"
