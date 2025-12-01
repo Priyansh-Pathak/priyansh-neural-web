@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Github, Star, GitFork, ExternalLink, Calendar, GitCommit } from "lucide-react";
+import { Github, Star, GitFork, ExternalLink } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 
@@ -26,23 +26,12 @@ interface GitHubUser {
   avatar_url: string;
 }
 
-interface Commit {
-  sha: string;
-  commit: {
-    message: string;
-    author: {
-      date: string;
-    };
-  };
-  html_url: string;
-}
 
 const GitHub = () => {
   const { ref, isVisible } = useScrollAnimation();
   const { toast } = useToast();
   const [userData, setUserData] = useState<GitHubUser | null>(null);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
-  const [commits, setCommits] = useState<Commit[]>([]);
   const [loading, setLoading] = useState(true);
 
   const GITHUB_USERNAME = "Priyansh-Pathak";
@@ -61,15 +50,6 @@ const GitHub = () => {
         );
         const reposData = await reposResponse.json();
         setRepos(reposData);
-
-        // Fetch recent commits from the most recent repo
-        if (reposData.length > 0) {
-          const commitsResponse = await fetch(
-            `https://api.github.com/repos/${GITHUB_USERNAME}/${reposData[0].name}/commits?per_page=3`
-          );
-          const commitsData = await commitsResponse.json();
-          setCommits(commitsData);
-        }
 
         setLoading(false);
       } catch (error) {
@@ -198,51 +178,6 @@ const GitHub = () => {
               </div>
             </div>
 
-            {/* Recent Commits */}
-            {commits.length > 0 && (
-              <div>
-                <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <GitCommit className="w-6 h-6 text-primary" />
-                  Recent Commits
-                </h3>
-                <div className="space-y-4">
-                  {commits.map((commit, index) => (
-                    <Card
-                      key={commit.sha}
-                      className={`p-4 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all group duration-500 ${
-                        isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-                      }`}
-                      style={{ transitionDelay: `${(index * 0.1) + 0.6}s` }}
-                    >
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <p className="text-sm font-medium mb-1 group-hover:text-primary transition-colors">
-                            {commit.commit.message.split("\n")[0]}
-                          </p>
-                          <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                            <div className="flex items-center gap-1">
-                              <Calendar className="w-3 h-3" />
-                              {formatDate(commit.commit.author.date)}
-                            </div>
-                            <code className="px-2 py-0.5 rounded bg-muted">
-                              {commit.sha.substring(0, 7)}
-                            </code>
-                          </div>
-                        </div>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          className="text-primary hover:text-primary/80"
-                          onClick={() => window.open(commit.html_url, "_blank")}
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* View GitHub Profile */}
             <div className="text-center">

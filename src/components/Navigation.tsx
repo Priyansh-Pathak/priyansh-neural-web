@@ -50,7 +50,7 @@ const Navigation = () => {
             onClick={() => scrollToSection("#hero")}
             className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hover:opacity-80 transition-opacity"
           >
-            PP
+            Priyansh
           </button>
 
           {/* Desktop Navigation */}
