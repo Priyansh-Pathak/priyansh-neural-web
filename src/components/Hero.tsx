@@ -3,7 +3,10 @@ import { ArrowRight, Download, Sparkles } from "lucide-react";
 import NeuralNetwork from "@/components/NeuralNetwork";
 import heroBg from "@/assets/hero-neural-bg.jpg";
 import profilePhoto from "@/assets/profile-photo.png";
+import { useNavigate } from "react-router-dom";
+
 const Hero = () => {
+  const navigate = useNavigate();
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0">
@@ -87,7 +90,7 @@ const Hero = () => {
                 size="lg" 
                 variant="outline" 
                 className="border-neon-purple/50 hover:border-neon-purple hover:bg-neon-purple/10 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-300 backdrop-blur-sm bg-card/30"
-                onClick={() => window.open("https://online.flippingbook.com/view/796388929/", "_blank")}
+                onClick={() => navigate("/resume")}
               >
                 View Resume
               </Button>
