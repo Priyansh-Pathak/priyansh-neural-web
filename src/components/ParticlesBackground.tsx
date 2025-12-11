@@ -171,7 +171,7 @@ const ParticlesBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none opacity-40 z-0"
+      className="fixed inset-0 pointer-events-none opacity-60 z-[1]"
     />
   );
 };
