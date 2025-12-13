@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import ParallaxBackground from "@/components/ParallaxBackground";
 import FloatingActionButton from "@/components/FloatingActionButton";
+import BackToTop from "@/components/BackToTop";
 
 import LoadingScreen from "@/components/LoadingScreen";
 import ScrollProgressIndicator from "@/components/ScrollProgressIndicator";
@@ -83,6 +84,7 @@ const Index = () => {
       </section>
       <Footer />
       <FloatingActionButton />
+      <BackToTop />
     </div>
   );
 };
