@@ -13,6 +13,7 @@ import ParticlesBackground from "@/components/ParticlesBackground";
 import ParallaxBackground from "@/components/ParallaxBackground";
 import FloatingActionButton from "@/components/FloatingActionButton";
 import BackToTop from "@/components/BackToTop";
+import AnimatedSection from "@/components/AnimatedSection";
 
 import LoadingScreen from "@/components/LoadingScreen";
 import ScrollProgressIndicator from "@/components/ScrollProgressIndicator";
@@ -22,7 +23,6 @@ const Index = () => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Get current section
       const scrollPosition = window.scrollY + window.innerHeight / 2;
       let currentSectionIndex = 0;
 
@@ -37,7 +37,6 @@ const Index = () => {
         }
       });
 
-      // Navigate with arrow keys
       if (e.key === "ArrowDown" || e.key === "ArrowRight") {
         e.preventDefault();
         const nextIndex = Math.min(currentSectionIndex + 1, sections.length - 1);
@@ -62,30 +61,39 @@ const Index = () => {
       <ParallaxBackground />
       <ParticlesBackground />
       <Navigation />
+      
       <section id="hero">
         <Hero />
       </section>
-      <section id="about">
+      
+      <AnimatedSection id="about" animation="fade-up">
         <About />
-      </section>
-      <section id="experience">
+      </AnimatedSection>
+      
+      <AnimatedSection id="experience" animation="fade-left" delay={100}>
         <Experience />
-      </section>
-      <section id="skills">
+      </AnimatedSection>
+      
+      <AnimatedSection id="skills" animation="fade-right" delay={100}>
         <Skills />
-      </section>
-      <section id="projects">
+      </AnimatedSection>
+      
+      <AnimatedSection id="projects" animation="scale" delay={100}>
         <Projects />
-      </section>
-      <section id="github">
+      </AnimatedSection>
+      
+      <AnimatedSection id="github" animation="fade-up" delay={100}>
         <GitHub />
-      </section>
-      <section id="testimonials">
+      </AnimatedSection>
+      
+      <AnimatedSection id="testimonials" animation="fade" delay={100}>
         <Testimonials />
-      </section>
-      <section id="contact">
+      </AnimatedSection>
+      
+      <AnimatedSection id="contact" animation="fade-up" delay={100}>
         <Contact />
-      </section>
+      </AnimatedSection>
+      
       <Footer />
       <FloatingActionButton />
       <BackToTop />
