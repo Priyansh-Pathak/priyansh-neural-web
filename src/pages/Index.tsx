@@ -7,6 +7,7 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import GitHub from "@/components/GitHub";
 import Contact from "@/components/Contact";
+import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import ParallaxBackground from "@/components/ParallaxBackground";
@@ -17,7 +18,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import ScrollProgressIndicator from "@/components/ScrollProgressIndicator";
 
 const Index = () => {
-  const sections = ["hero", "about", "experience", "skills", "projects", "github", "contact"];
+  const sections = ["hero", "about", "experience", "skills", "projects", "github", "testimonials", "contact"];
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -78,6 +79,9 @@ const Index = () => {
       </section>
       <section id="github">
         <GitHub />
+      </section>
+      <section id="testimonials">
+        <Testimonials />
       </section>
       <section id="contact">
         <Contact />

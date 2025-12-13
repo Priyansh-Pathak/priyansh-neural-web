@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Sparkles } from "lucide-react";
 import NeuralNetwork from "@/components/NeuralNetwork";
+import TypingAnimation from "@/components/TypingAnimation";
 import heroBg from "@/assets/hero-neural-bg.jpg";
 import profilePhoto from "@/assets/profile-photo.png";
 import { useNavigate } from "react-router-dom";
+
+const roles = ["AI Developer", "ML Engineer", "Full Stack Developer", "Research Intern", "Problem Solver"];
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -43,12 +46,17 @@ const Hero = () => {
               <div className="h-1.5 w-32 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta rounded-full shadow-[0_0_20px_rgba(0,255,255,0.6)] animate-border-flow" style={{ backgroundSize: "200% 200%" }} />
             </div>
 
-            {/* Enhanced Tagline */}
-            <p className="text-xl lg:text-2xl text-foreground/90 leading-relaxed">
-              AI/ML-focused Computer Science undergrad building{" "}
-              <span className="text-neon-cyan font-bold drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">intelligent systems</span> &{" "}
-              <span className="text-neon-purple font-bold drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]">production-ready web apps</span>.
-            </p>
+            {/* Enhanced Tagline with Typing Animation */}
+            <div className="text-xl lg:text-2xl text-foreground/90 leading-relaxed">
+              <p className="mb-2">
+                I'm a <TypingAnimation texts={roles} typingSpeed={80} deletingSpeed={40} pauseTime={2000} />
+              </p>
+              <p>
+                Building{" "}
+                <span className="text-neon-cyan font-bold drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">intelligent systems</span> &{" "}
+                <span className="text-neon-purple font-bold drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]">production-ready web apps</span>.
+              </p>
+            </div>
 
             {/* Bio */}
             <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">Passionate CS undergraduate specializing in AI/ML. Experienced in responsive web applications and deploying AI models using industry-standard tools. Multiple internships and hackathons demonstrating adaptability and strong coding skills.</p>
