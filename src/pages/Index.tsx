@@ -66,31 +66,31 @@ const Index = () => {
         <Hero />
       </section>
       
-      <AnimatedSection id="about" animation="fade-up">
+      <AnimatedSection id="about" animation="blur" delay={0}>
         <About />
       </AnimatedSection>
       
-      <AnimatedSection id="experience" animation="fade-left" delay={100}>
+      <AnimatedSection id="experience" animation="slide-up" delay={50}>
         <Experience />
       </AnimatedSection>
       
-      <AnimatedSection id="skills" animation="fade-right" delay={100}>
+      <AnimatedSection id="skills" animation="rotate" delay={50}>
         <Skills />
       </AnimatedSection>
       
-      <AnimatedSection id="projects" animation="scale" delay={100}>
+      <AnimatedSection id="projects" animation="scale" delay={50}>
         <Projects />
       </AnimatedSection>
       
-      <AnimatedSection id="github" animation="fade-up" delay={100}>
+      <AnimatedSection id="github" animation="bounce" delay={50}>
         <GitHub />
       </AnimatedSection>
       
-      <AnimatedSection id="testimonials" animation="fade" delay={100}>
+      <AnimatedSection id="testimonials" animation="blur" delay={50}>
         <Testimonials />
       </AnimatedSection>
       
-      <AnimatedSection id="contact" animation="fade-up" delay={100}>
+      <AnimatedSection id="contact" animation="slide-up" delay={50}>
         <Contact />
       </AnimatedSection>
       
