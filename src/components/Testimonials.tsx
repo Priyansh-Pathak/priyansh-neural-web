@@ -1,40 +1,34 @@
 import { useState, useEffect } from "react";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import useMouseGlow from "@/hooks/useMouseGlow";
 
 const testimonials = [
   {
-    name: "Dr. Rajesh Kumar",
     role: "Research Supervisor, IIT Mandi",
     content:
       "Priyansh demonstrated exceptional aptitude in AI research. His work on face recognition systems showed both technical depth and innovative thinking.",
-    avatar: "RK",
   },
   {
-    name: "Ankit Sharma",
     role: "Team Lead, AIEnsured",
     content:
       "A dedicated intern who quickly grasped complex ML concepts. His contributions to our FATE framework were invaluable and showed great attention to detail.",
-    avatar: "AS",
   },
   {
-    name: "Priya Mehta",
     role: "Project Manager, Sky Brisk Technologies",
     content:
       "Priyansh's ability to optimize ML models and collaborate effectively made him stand out. He consistently delivered quality work ahead of deadlines.",
-    avatar: "PM",
   },
   {
-    name: "Prof. Suresh Verma",
     role: "Faculty, SRM Institute",
     content:
       "One of the brightest students in AI/ML. His project work demonstrates a rare combination of theoretical knowledge and practical implementation skills.",
-    avatar: "SV",
   },
 ];
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const { ref, glowStyle, isHovering } = useMouseGlow<HTMLDivElement>();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -89,24 +83,32 @@ const Testimonials = () => {
         {/* Testimonial Card */}
         <div className="relative">
           <div
-            className={`bg-card/50 backdrop-blur-xl border border-border/50 rounded-2xl p-8 md:p-12 transition-all duration-300 ${
+            ref={ref}
+            style={glowStyle}
+            className={`relative bg-card/50 backdrop-blur-xl border border-border/50 rounded-2xl p-8 md:p-12 transition-all duration-300 overflow-hidden ${
               isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
-            }`}
+            } ${isHovering ? "border-neon-cyan/30" : ""}`}
           >
-            <Quote className="w-12 h-12 text-neon-cyan/30 mb-6" />
+            {/* Mouse glow effect */}
+            <div
+              className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+              style={{
+                background: `radial-gradient(600px circle at var(--glow-x) var(--glow-y), hsl(var(--neon-cyan) / 0.15), transparent 40%)`,
+                opacity: `var(--glow-opacity)`,
+              }}
+            />
+            
+            <Quote className="w-12 h-12 text-neon-cyan/30 mb-6 relative z-10" />
 
-            <p className="text-lg md:text-xl text-foreground/90 leading-relaxed mb-8 min-h-[100px]">
+            <p className="text-lg md:text-xl text-foreground/90 leading-relaxed mb-8 min-h-[100px] relative z-10">
               "{testimonials[currentIndex].content}"
             </p>
 
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-neon-cyan to-neon-purple flex items-center justify-center text-background font-bold text-lg">
-                {testimonials[currentIndex].avatar}
+            <div className="flex items-center gap-4 relative z-10">
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-neon-cyan to-neon-purple flex items-center justify-center">
+                <Quote className="w-6 h-6 text-background" />
               </div>
               <div>
-                <h4 className="font-semibold text-foreground">
-                  {testimonials[currentIndex].name}
-                </h4>
                 <p className="text-sm text-muted-foreground">
                   {testimonials[currentIndex].role}
                 </p>
