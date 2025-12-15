@@ -2,6 +2,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import GlowCard from "@/components/GlowCard";
 
 import projectAttendance from "@/assets/project-attendance.jpg";
 import projectStoryteller from "@/assets/project-storyteller.jpg";
@@ -61,75 +62,79 @@ const Projects = () => {
         {/* Projects Grid */}
         <div className="grid lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card 
+            <GlowCard 
               key={index}
-              className="overflow-hidden bg-gradient-to-br from-card/60 to-card/30 backdrop-blur-xl border border-neon-cyan/20 hover:border-neon-cyan/60 transition-all duration-500 hover:shadow-[0_0_50px_rgba(0,255,255,0.3)] group opacity-0 animate-scale-in relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-neon-cyan/5 before:via-transparent before:to-neon-purple/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+              className="rounded-xl opacity-0 animate-scale-in"
               style={{ animationDelay: `${0.3 + index * 0.2}s`, animationFillMode: "forwards" }}
             >
-              {/* Project Image */}
-              <div className="relative h-48 overflow-hidden bg-muted">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
-                
-                {/* Glassmorphism Hover Overlay */}
-                <div className="absolute inset-0 bg-background/80 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                  <Button 
-                    size="sm" 
-                    className="bg-primary/90 hover:bg-primary shadow-lg"
-                    onClick={() => window.open(project.github, "_blank")}
-                  >
-                    <Github className="mr-2 w-4 h-4" />
-                    GitHub
-                  </Button>
-                  {project.demo !== "#" && (
+              <Card 
+                className="overflow-hidden h-full bg-gradient-to-br from-card/60 to-card/30 backdrop-blur-xl border border-neon-cyan/20 hover:border-neon-cyan/60 transition-all duration-500 hover:shadow-[0_0_50px_rgba(0,255,255,0.3)] group relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-neon-cyan/5 before:via-transparent before:to-neon-purple/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+              >
+                {/* Project Image */}
+                <div className="relative h-48 overflow-hidden bg-muted">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
+                  
+                  {/* Glassmorphism Hover Overlay */}
+                  <div className="absolute inset-0 bg-background/80 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 z-20">
                     <Button 
                       size="sm" 
-                      variant="outline"
-                      className="border-primary/50 bg-card/50 backdrop-blur-sm hover:bg-primary/10"
-                      onClick={() => window.open(project.demo, "_blank")}
+                      className="bg-primary/90 hover:bg-primary shadow-lg"
+                      onClick={() => window.open(project.github, "_blank")}
                     >
-                      <ExternalLink className="mr-2 w-4 h-4" />
-                      Demo
+                      <Github className="mr-2 w-4 h-4" />
+                      GitHub
                     </Button>
-                  )}
+                    {project.demo !== "#" && (
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        className="border-primary/50 bg-card/50 backdrop-blur-sm hover:bg-primary/10"
+                        onClick={() => window.open(project.demo, "_blank")}
+                      >
+                        <ExternalLink className="mr-2 w-4 h-4" />
+                        Demo
+                      </Button>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              {/* Project Content */}
-              <div className="p-6 space-y-4">
-                <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
+                {/* Project Content */}
+                <div className="p-6 space-y-4 relative z-10">
+                  <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
 
-                <p className="text-foreground/80 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Highlight */}
-                <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
-                  <p className="text-sm text-primary font-medium">
-                    ✨ {project.highlight}
+                  <p className="text-foreground/80 text-sm leading-relaxed">
+                    {project.description}
                   </p>
-                </div>
 
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {project.tech.map((tech, i) => (
-                    <span 
-                      key={i}
-                      className="px-3 py-1 rounded-full bg-muted text-xs font-medium border border-border/50"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                  {/* Highlight */}
+                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+                    <p className="text-sm text-primary font-medium">
+                      ✨ {project.highlight}
+                    </p>
+                  </div>
 
-              </div>
-            </Card>
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {project.tech.map((tech, i) => (
+                      <span 
+                        key={i}
+                        className="px-3 py-1 rounded-full bg-muted text-xs font-medium border border-border/50"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                </div>
+              </Card>
+            </GlowCard>
           ))}
         </div>
 
