@@ -1,4 +1,4 @@
-- [ ] Replace experience timeline with all roles from CV
-- [ ] Add publications section with two CV publications
-- [ ] Link Publications in navigation and page flow
-- [ ] Verify build and rendered sections
+- [x] Replace experience timeline with all roles from CV
+- [x] Add publications section with two CV publications
+- [x] Link Publications in navigation and page flow
+- [x] Verify build and rendered sections
