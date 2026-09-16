@@ -14,6 +14,7 @@ const Navigation = () => {
     { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
+    { name: "Publications", href: "#publications" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "GitHub", href: "#github" },
