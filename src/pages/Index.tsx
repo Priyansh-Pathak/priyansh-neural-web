@@ -69,35 +69,35 @@ const Index = () => {
         <Hero />
       </section>
       
-      <AnimatedSection id="about" animation="blur" delay={0}>
+      <AnimatedSection animation="blur" delay={0}>
         <About />
       </AnimatedSection>
       
-      <AnimatedSection id="experience" animation="slide-up" delay={50}>
+      <AnimatedSection animation="slide-up" delay={50}>
         <Experience />
       </AnimatedSection>
 
-      <AnimatedSection id="publications" animation="fade-right" delay={50}>
+      <AnimatedSection animation="fade-right" delay={50}>
         <Publications />
       </AnimatedSection>
       
-      <AnimatedSection id="skills" animation="rotate" delay={50}>
+      <AnimatedSection animation="rotate" delay={50}>
         <Skills />
       </AnimatedSection>
       
-      <AnimatedSection id="projects" animation="scale" delay={50}>
+      <AnimatedSection animation="scale" delay={50}>
         <Projects />
       </AnimatedSection>
       
-      <AnimatedSection id="github" animation="bounce" delay={50}>
+      <AnimatedSection animation="bounce" delay={50}>
         <GitHub />
       </AnimatedSection>
       
-      <AnimatedSection id="testimonials" animation="blur" delay={50}>
+      <AnimatedSection animation="blur" delay={50}>
         <Testimonials />
       </AnimatedSection>
       
-      <AnimatedSection id="contact" animation="slide-up" delay={50}>
+      <AnimatedSection animation="slide-up" delay={50}>
         <Contact />
       </AnimatedSection>
       
