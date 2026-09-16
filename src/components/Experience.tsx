@@ -18,42 +18,105 @@ const Experience = () => {
 
   const experiences = [
     {
-      title: "Research Intern",
-      company: "IIT Mandi",
-      location: "Himachal Pradesh, India",
-      period: "May 2025 – Jul 2025",
-      description: [
-        "AI-based video attendance research with face recognition & Siamese networks",
-        "Implemented pipelines using TensorFlow/Keras, MTCNN, triplet loss",
-        "Dataset preprocessing, model evaluation, literature survey",
-      ],
-      tech: ["Python", "TensorFlow", "Keras", "MTCNN", "Siamese Networks", "OpenCV"],
-      milestone: "🔬",
-    },
-    {
-      title: "AI Intern",
-      company: "AIEnsured",
+      title: "Research Intern — Robot Learning & Embodied AI",
+      company: "Carnegie Mellon University — Xu Lab",
       location: "Remote",
-      period: "Jul 2025 – Sep 2025",
+      period: "Jun 2026 – Present",
       description: [
-        "Developed/fine-tuned ML models for fairness, robustness, explainability",
-        "Automated model evaluation pipelines; documented results for auditability",
-        "Integrated AI governance tools into client workflows",
+        "Developing educational Jupyter notebooks on Diffusion Policy and RLBench for the xulabs/edu repository",
+        "Implementing hands-on experiments in imitation learning, task and motion planning, and manipulation benchmarks",
+        "Contributing to reproducible open curriculum infrastructure and exploring vision-language models for robot manipulation",
       ],
-      tech: ["Python", "Scikit-learn", "XAI", "Model Evaluation", "ML Pipelines"],
+      tech: ["Python", "Jupyter", "Diffusion Policy", "RLBench", "Imitation Learning", "Vision-Language Models"],
       milestone: "🤖",
     },
     {
-      title: "AI/ML Intern",
-      company: "Sky Brisk Technologies",
-      location: "Remote",
-      period: "2024",
+      title: "Research Intern — School of AI & Data Engineering",
+      company: "Indian Institute of Technology Ropar",
+      location: "Ropar, India",
+      period: "Jun 2026 – Aug 2026",
       description: [
-        "Built predictive analytics models; feature engineering & hyperparameter tuning",
-        "Performance optimization; collaborated on deployment of AI solutions",
+        "Researched bacteriophage–host interaction prediction using deep learning on protein sequence datasets",
+        "Designed and conducted experiments end-to-end, generating and evaluating experimental results",
+        "Compared approaches, analyzed outcomes, and derived observations on model effectiveness",
       ],
-      tech: ["Python", "Machine Learning", "Feature Engineering", "Model Deployment"],
+      tech: ["Python", "Deep Learning", "Protein Sequences", "Computational Biology", "Model Evaluation"],
+      milestone: "🧬",
+    },
+    {
+      title: "AI/ML Intern — Document Automation",
+      company: "QX Global Group",
+      location: "Remote",
+      period: "May 2026 – Jul 2026",
+      description: [
+        "Built an invoice verification pipeline from scanned documents to structured data through OCR labelling and extraction",
+        "Used LayoutLM for layout-aware document understanding beyond plain text extraction",
+        "Worked with real-world document variation where labelling quality drives downstream model quality",
+      ],
+      tech: ["Python", "OCR", "LayoutLM", "Document Understanding", "Model Training"],
+      milestone: "📄",
+    },
+    {
+      title: "Research Intern — AI Navigation & Path Planning",
+      company: "DRDO CAIR",
+      location: "Remote",
+      period: "Jan 2026 – Mar 2026",
+      description: [
+        "Developing spatially-aware ML models for intelligent route planning in defense navigation systems",
+        "Implementing and benchmarking graph-based and reinforcement learning algorithms for path optimization",
+        "Reproducing and extending recent research algorithms to establish comparative baselines",
+      ],
+      tech: ["Python", "Graph Algorithms", "Reinforcement Learning", "Path Planning", "Research"],
+      milestone: "🧭",
+    },
+    {
+      title: "Research Intern — Computer Vision & Deep Learning",
+      company: "Indian Institute of Technology Mandi",
+      location: "Mandi, Himachal Pradesh",
+      period: "May 2025 – Jul 2025",
+      description: [
+        "Built an end-to-end video attendance system using MTCNN and Siamese networks with triplet loss",
+        "Performed comparative evaluation against baseline face recognition models and prepared classroom video data",
+        "Investigated metric learning improvements for low-quality, unconstrained video conditions",
+      ],
+      tech: ["Python", "PyTorch", "MTCNN", "Siamese Networks", "Triplet Loss", "OpenCV"],
+      milestone: "🔬",
+    },
+    {
+      title: "AI Research Intern — Fairness & Robustness",
+      company: "AIEnsured",
+      location: "Remote",
+      period: "Research Internship",
+      description: [
+        "Built model evaluation pipelines focused on fairness metrics, bias detection, and explainability",
+        "Conducted experimental analysis of model behaviour under distribution shift and label imbalance",
+      ],
+      tech: ["Python", "Scikit-learn", "Fairness", "Robustness", "Explainable AI"],
+      milestone: "⚖️",
+    },
+    {
+      title: "Machine Learning Intern",
+      company: "Skybrisk Technologies",
+      location: "Remote",
+      period: "Feb 2025 – Aug 2025",
+      description: [
+        "Developed predictive models and end-to-end data preprocessing pipelines for real-world structured datasets",
+        "Built AI-driven decision systems and contributed to production-ready deployments",
+      ],
+      tech: ["Python", "Machine Learning", "Data Preprocessing", "Predictive Modeling", "Deployment"],
       milestone: "📊",
+    },
+    {
+      title: "Computer Vision Intern",
+      company: "CodTech IT Solutions",
+      location: "Remote",
+      period: "Dec 2024 – Jan 2025",
+      description: [
+        "Implemented CNN-based image classification pipelines using TensorFlow and Keras",
+        "Applied augmentation and evaluation workflows to improve image model performance",
+      ],
+      tech: ["Python", "TensorFlow", "Keras", "CNNs", "Computer Vision"],
+      milestone: "👁️",
     },
   ];
 
@@ -75,10 +138,10 @@ const Experience = () => {
         {/* Section Header */}
         <div className="text-center mb-20 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
           <div className="inline-block mb-4 px-6 py-2 rounded-full bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 backdrop-blur-sm border border-neon-cyan/30">
-            <span className="text-sm font-semibold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">Career Journey</span>
+            <span className="text-sm font-semibold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">Research & Industry</span>
           </div>
           <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
-            Work Experience
+            Experience
           </h2>
           <div className="h-1.5 w-32 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta rounded-full mx-auto shadow-[0_0_20px_rgba(0,255,255,0.5)]" />
         </div>
