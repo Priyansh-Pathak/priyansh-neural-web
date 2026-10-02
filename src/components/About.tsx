@@ -16,7 +16,7 @@ const About = () => {
     {
       institution: "IIT Ropar",
       degree: "Minor in Artificial Intelligence",
-      period: "Expected 2025",
+      period: "Sept 2024 – Feb 2026",
       coursework: ["Deep Learning", "Neural Networks", "Computer Vision"],
     },
   ];
