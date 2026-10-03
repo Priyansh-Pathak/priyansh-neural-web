@@ -6,3 +6,7 @@
 - [x] Replace homepage profile photo
 - [x] Remove scroll and cursor rerenders that slowed lower sections
 - [x] Verify updated assets and smooth page loading
+- [ ] Replace the resume everywhere with CV_Priyansh-2.pdf
+- [ ] Align experience, publications, projects, skills, and profile links with the new CV
+- [ ] Redesign the full portfolio as a restrained charcoal-and-navy professional interface
+- [ ] Verify desktop and mobile presentation, resume viewing, and downloads
