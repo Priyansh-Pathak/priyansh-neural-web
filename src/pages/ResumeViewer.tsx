@@ -1,13 +1,14 @@
 import { Download, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import resumeAsset from "@/assets/CV_Priyansh_Oct.pdf.asset.json";
 
 const ResumeViewer = () => {
   const navigate = useNavigate();
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/resume-priyansh-pathak.pdf";
+    link.href = resumeAsset.url;
     link.download = "Priyansh_Pathak_Resume.pdf";
     document.body.appendChild(link);
     link.click();
@@ -45,7 +46,7 @@ const ResumeViewer = () => {
       {/* PDF Viewer */}
       <div className="pt-16 h-screen">
         <iframe
-          src="/resume-priyansh-pathak.pdf"
+          src={resumeAsset.url}
           className="w-full h-full border-0"
           title="Priyansh Pathak Resume"
         />

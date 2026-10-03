@@ -26,7 +26,7 @@ const NeuralNetwork = () => {
     window.addEventListener("resize", resizeCanvas);
 
     // Create nodes
-    const nodeCount = 50;
+    const nodeCount = 28;
     const nodes: Node[] = [];
     const connectionDistance = 150;
 

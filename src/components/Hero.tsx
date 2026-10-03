@@ -3,7 +3,8 @@ import { ArrowRight, Download, Sparkles } from "lucide-react";
 import NeuralNetwork from "@/components/NeuralNetwork";
 import TypingAnimation from "@/components/TypingAnimation";
 import heroBg from "@/assets/hero-neural-bg.jpg";
-import profilePhoto from "@/assets/profile-photo.png";
+import profilePhoto from "@/assets/website_photo.jpeg.asset.json";
+import resumeAsset from "@/assets/CV_Priyansh_Oct.pdf.asset.json";
 import { useNavigate } from "react-router-dom";
 
 const roles = ["AI Developer", "ML Engineer", "Full Stack Developer", "Research Intern", "Problem Solver"];
@@ -108,7 +109,7 @@ const Hero = () => {
                 className="border-neon-magenta/50 hover:border-neon-magenta hover:bg-neon-magenta/10 hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] transition-all duration-300 backdrop-blur-sm bg-card/30"
                 onClick={() => {
                   const link = document.createElement("a");
-                  link.href = "/resume-priyansh-pathak.pdf";
+                  link.href = resumeAsset.url;
                   link.download = "Priyansh_Pathak_Resume.pdf";
                   link.click();
                 }}
@@ -134,7 +135,7 @@ const Hero = () => {
                   {/* Image */}
                   <div className="absolute inset-2 rounded-full overflow-hidden">
                     <img 
-                      src={profilePhoto} 
+                      src={profilePhoto.url} 
                       alt="Priyansh Pathak - AI/ML Engineer" 
                       className="w-full h-full object-cover"
                     />

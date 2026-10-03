@@ -17,7 +17,6 @@ const AnimatedSection = ({
 }: AnimatedSectionProps) => {
   const ref = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,20 +44,6 @@ const AnimatedSection = ({
         observer.unobserve(currentRef);
       }
     };
-  }, []);
-
-  // Parallax effect on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
-        const scrollProgress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
-        setScrollY(scrollProgress);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const getInitialStyles = (): React.CSSProperties => {
@@ -94,13 +79,6 @@ const AnimatedSection = ({
     }
   };
 
-  // Subtle parallax transform based on scroll
-  const parallaxStyle: React.CSSProperties = isVisible
-    ? {
-        transform: `translateY(${(1 - scrollY) * 15}px)`,
-      }
-    : {};
-
   return (
     <section
       ref={ref}
@@ -108,7 +86,6 @@ const AnimatedSection = ({
       className={`transition-all duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${className}`}
       style={{
         ...getInitialStyles(),
-        ...parallaxStyle,
       }}
     >
       {children}
