@@ -15,7 +15,6 @@ import ParallaxBackground from "@/components/ParallaxBackground";
 import FloatingActionButton from "@/components/FloatingActionButton";
 import BackToTop from "@/components/BackToTop";
 import AnimatedSection from "@/components/AnimatedSection";
-import CursorParticles from "@/components/CursorParticles";
 
 import LoadingScreen from "@/components/LoadingScreen";
 import ScrollProgressIndicator from "@/components/ScrollProgressIndicator";
@@ -60,7 +59,6 @@ const Index = () => {
     <div className="min-h-screen bg-background/80 text-foreground relative z-[2]">
       <LoadingScreen />
       <ScrollProgressIndicator />
-      <CursorParticles />
       <ParallaxBackground />
       <ParticlesBackground />
       <Navigation />

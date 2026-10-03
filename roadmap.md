@@ -2,3 +2,7 @@
 - [x] Add publications section with two CV publications
 - [x] Link Publications in navigation and page flow
 - [x] Verify build and rendered sections
+- [x] Replace resume PDF in viewer and download actions
+- [x] Replace homepage profile photo
+- [x] Remove scroll and cursor rerenders that slowed lower sections
+- [x] Verify updated assets and smooth page loading

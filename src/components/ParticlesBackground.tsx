@@ -38,7 +38,7 @@ const ParticlesBackground = () => {
     window.addEventListener("mousemove", handleMouseMove);
 
     // Create particles
-    const particleCount = 40;
+    const particleCount = 24;
     const particles: Particle[] = [];
 
     for (let i = 0; i < particleCount; i++) {
