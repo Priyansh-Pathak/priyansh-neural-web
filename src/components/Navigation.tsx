@@ -42,8 +42,8 @@ const Navigation = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
     toast({
-      title: `${newTheme === "dark" ? "🌙" : "☀️"} ${newTheme === "dark" ? "Dark" : "Light"} mode activated`,
-      description: `Theme preference saved automatically`,
+      title: `${newTheme === "dark" ? "Dark" : "Light"} mode enabled`,
+      description: "Your preference has been saved.",
       duration: 2000,
     });
   };
@@ -52,7 +52,7 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-card/80 backdrop-blur-lg border-b border-border shadow-lg"
+          ? "bg-background/95 border-b border-border"
           : "bg-transparent"
       }`}
     >
@@ -61,7 +61,7 @@ const Navigation = () => {
           {/* Logo */}
           <button
             onClick={() => scrollToSection("#hero")}
-            className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+            className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
           >
             Priyansh
           </button>

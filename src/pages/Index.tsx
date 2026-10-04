@@ -10,13 +10,10 @@ import GitHub from "@/components/GitHub";
 import Contact from "@/components/Contact";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
-import ParticlesBackground from "@/components/ParticlesBackground";
-import ParallaxBackground from "@/components/ParallaxBackground";
 import FloatingActionButton from "@/components/FloatingActionButton";
 import BackToTop from "@/components/BackToTop";
 import AnimatedSection from "@/components/AnimatedSection";
 
-import LoadingScreen from "@/components/LoadingScreen";
 import ScrollProgressIndicator from "@/components/ScrollProgressIndicator";
 
 const Index = () => {
@@ -56,18 +53,15 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background/80 text-foreground relative z-[2]">
-      <LoadingScreen />
+    <div className="min-h-screen bg-background text-foreground">
       <ScrollProgressIndicator />
-      <ParallaxBackground />
-      <ParticlesBackground />
       <Navigation />
       
       <section id="hero">
         <Hero />
       </section>
       
-      <AnimatedSection animation="blur" delay={0}>
+      <AnimatedSection animation="fade-up" delay={0}>
         <About />
       </AnimatedSection>
       
@@ -79,15 +73,15 @@ const Index = () => {
         <Publications />
       </AnimatedSection>
       
-      <AnimatedSection animation="rotate" delay={50}>
+      <AnimatedSection animation="fade-up" delay={50}>
         <Skills />
       </AnimatedSection>
       
-      <AnimatedSection animation="scale" delay={50}>
+      <AnimatedSection animation="fade-up" delay={50}>
         <Projects />
       </AnimatedSection>
       
-      <AnimatedSection animation="bounce" delay={50}>
+      <AnimatedSection animation="fade-up" delay={50}>
         <GitHub />
       </AnimatedSection>
       

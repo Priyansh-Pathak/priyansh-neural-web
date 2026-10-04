@@ -1,158 +1,33 @@
-import { ExternalLink, Github } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import GlowCard from "@/components/GlowCard";
 
-import projectAttendance from "@/assets/project-attendance.jpg";
-import projectStoryteller from "@/assets/project-storyteller.jpg";
-import projectFaceRecog from "@/assets/project-facerecog.jpg";
+const projects = [
+  { title: "Video-Based Face Recognition Attendance System", stack: "PyTorch · MTCNN · Triplet Loss · OpenCV", description: "Production-oriented classroom video pipeline using Siamese networks for embedding-based recognition and automated attendance logging." },
+  { title: "Skin Cancer Detection Web Application", stack: "TensorFlow · EfficientNetB3 · Flask · Grad-CAM", description: "Dermoscopic image classifier with an AUC of 0.826, sensitivity of 0.916, visual explanations, and a deployable Flask interface." },
+  { title: "Real-Time Face Mask Detection", stack: "TensorFlow · MobileNetV2 · OpenCV · SSD", description: "Two-stage real-time detection pipeline optimized with batched inference across all faces in each frame." },
+  { title: "PCB Defect Detection System", stack: "YOLOv5s · 693 Images · 6 Defect Classes", description: "Manufacturing defect detection pipeline supported by a structured risk plan and sprint-based production testing framework." },
+  { title: "AI Culture Storytelling Generator", stack: "Gemini 1.5 Flash · Streamlit · gTTS", description: "Multimodal application that turns uploaded imagery into contextual cultural stories with downloadable text and audio narration." },
+];
 
-const Projects = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
-  const projects = [
-    {
-      title: "AI-Powered Video Attendance System",
-      description: "Flask-based system using Siamese neural networks, MTCNN, and triplet loss for face recognition in classroom videos. Automates preprocessing, model training, and attendance logging.",
-      tech: ["Python", "Flask", "TensorFlow", "Keras", "OpenCV", "MTCNN"],
-      image: projectAttendance,
-      highlight: "Research-oriented pipeline with automated detection & matching",
-      github: "https://github.com/Priyansh-Pathak",
-      demo: "#",
-    },
-    {
-      title: "Smart Cultural Storyteller",
-      description: "AI app that narrates cultural stories from user-uploaded images using Google Generative AI with JSON-based cultural datasets and a Streamlit interface.",
-      tech: ["Python", "Streamlit", "Generative AI", "Image Processing"],
-      image: projectStoryteller,
-      highlight: "Combines computer vision with cultural knowledge",
-      github: "https://github.com/Priyansh-Pathak",
-      demo: "#",
-    },
-    {
-      title: "Face Recognition Attendance System",
-      description: "Python Tkinter + OpenCV desktop app with password-protected training, real-time recognition, and CSV-based attendance logging.",
-      tech: ["Python", "Tkinter", "OpenCV", "CSV"],
-      image: projectFaceRecog,
-      highlight: "User-friendly GUI with secure training module",
-      github: "https://github.com/Priyansh-Pathak",
-      demo: "#",
-    },
-  ];
-
-  return (
-    <section 
-      ref={ref}
-      id="projects" 
-      className={`py-24 px-6 lg:px-8 bg-muted/30 transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-    >
-      <div className="container max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
-            Featured Projects
-          </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full mx-auto shadow-[0_0_20px_rgba(0,255,255,0.5)]" />
-          <p className="text-muted-foreground mt-4">Building intelligent solutions from research to production</p>
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <GlowCard 
-              key={index}
-              className="rounded-xl opacity-0 animate-scale-in"
-              style={{ animationDelay: `${0.3 + index * 0.2}s`, animationFillMode: "forwards" }}
-            >
-              <Card 
-                className="overflow-hidden h-full bg-gradient-to-br from-card/60 to-card/30 backdrop-blur-xl border border-neon-cyan/20 hover:border-neon-cyan/60 transition-all duration-500 hover:shadow-[0_0_50px_rgba(0,255,255,0.3)] group relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-neon-cyan/5 before:via-transparent before:to-neon-purple/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
-              >
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden bg-muted">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
-                  
-                  {/* Glassmorphism Hover Overlay */}
-                  <div className="absolute inset-0 bg-background/80 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 z-20">
-                    <Button 
-                      size="sm" 
-                      className="bg-primary/90 hover:bg-primary shadow-lg"
-                      onClick={() => window.open(project.github, "_blank")}
-                    >
-                      <Github className="mr-2 w-4 h-4" />
-                      GitHub
-                    </Button>
-                    {project.demo !== "#" && (
-                      <Button 
-                        size="sm" 
-                        variant="outline"
-                        className="border-primary/50 bg-card/50 backdrop-blur-sm hover:bg-primary/10"
-                        onClick={() => window.open(project.demo, "_blank")}
-                      >
-                        <ExternalLink className="mr-2 w-4 h-4" />
-                        Demo
-                      </Button>
-                    )}
-                  </div>
-                </div>
-
-                {/* Project Content */}
-                <div className="p-6 space-y-4 relative z-10">
-                  <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-foreground/80 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  {/* Highlight */}
-                  <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
-                    <p className="text-sm text-primary font-medium">
-                      ✨ {project.highlight}
-                    </p>
-                  </div>
-
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {project.tech.map((tech, i) => (
-                      <span 
-                        key={i}
-                        className="px-3 py-1 rounded-full bg-muted text-xs font-medium border border-border/50"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                </div>
-              </Card>
-            </GlowCard>
-          ))}
-        </div>
-
-        {/* View More Projects */}
-        <div className="text-center mt-12">
-          <Button 
-            size="lg" 
-            variant="outline"
-            className="border-primary/50 hover:bg-primary/10"
-            onClick={() => window.open("https://github.com/Priyansh-Pathak", "_blank")}
-          >
-            <Github className="mr-2 w-5 h-5" />
-            View All Projects on GitHub
-          </Button>
-        </div>
+const Projects = () => (
+  <section id="projects" className="border-b border-border bg-muted/20 px-6 py-24 lg:px-8">
+    <div className="container mx-auto max-w-6xl">
+      <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div><p className="section-label">Selected work</p><h2 className="section-title">Applied research & engineering</h2></div>
+        <Button variant="outline" onClick={() => window.open("https://github.com/pripat1008", "_blank")}>GitHub profile <ArrowUpRight className="ml-2 h-4 w-4" /></Button>
       </div>
-    </section>
-  );
-};
+      <div className="grid gap-px bg-border border border-border md:grid-cols-2">
+        {projects.map((project, index) => (
+          <article key={project.title} className="group bg-background p-7 transition-colors hover:bg-card">
+            <div className="flex items-start justify-between gap-5"><span className="text-xs text-muted-foreground">0{index + 1}</span><ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></div>
+            <h3 className="mt-12 text-xl font-semibold leading-snug">{project.title}</h3>
+            <p className="mt-4 min-h-20 text-sm leading-6 text-muted-foreground">{project.description}</p>
+            <p className="mt-6 border-t border-border pt-4 text-xs font-medium text-foreground">{project.stack}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default Projects;

@@ -21,7 +21,7 @@ const Experience = () => {
       title: "Research Intern — Robot Learning & Embodied AI",
       company: "Carnegie Mellon University — Xu Lab",
       location: "Remote",
-      period: "Jun 2026 – Present",
+      period: "Apr 2026 – Sept 2026",
       description: [
         "Developing educational Jupyter notebooks on Diffusion Policy and RLBench for the xulabs/edu repository",
         "Implementing hands-on experiments in imitation learning, task and motion planning, and manipulation benchmarks",
