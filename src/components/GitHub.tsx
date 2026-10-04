@@ -1,204 +1,32 @@
-import { useState, useEffect } from "react";
-import { Card } from "@/components/ui/card";
+import { useEffect, useState } from "react";
+import { ExternalLink, Github, GitFork, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Github, Star, GitFork, ExternalLink } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 
-
-interface GitHubRepo {
-  id: number;
-  name: string;
-  description: string;
-  html_url: string;
-  stargazers_count: number;
-  forks_count: number;
-  language: string;
-  updated_at: string;
-}
-
-interface GitHubUser {
-  name: string;
-  bio: string;
-  public_repos: number;
-  followers: number;
-  following: number;
-  avatar_url: string;
-}
-
+interface Repo { id: number; name: string; description: string | null; html_url: string; stargazers_count: number; forks_count: number; language: string | null; }
+interface User { public_repos: number; followers: number; }
+const USERNAME = "pripat1008";
 
 const GitHub = () => {
   const { ref, isVisible } = useScrollAnimation();
-  const { toast } = useToast();
-  const [userData, setUserData] = useState<GitHubUser | null>(null);
-  const [repos, setRepos] = useState<GitHubRepo[]>([]);
+  const [user, setUser] = useState<User | null>(null);
+  const [repos, setRepos] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const GITHUB_USERNAME = "Priyansh-Pathak";
-
   useEffect(() => {
-    const fetchGitHubData = async () => {
-      try {
-        // Fetch user data
-        const userResponse = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
-        const userData = await userResponse.json();
-        setUserData(userData);
-
-        // Fetch repositories (top 6 by stars)
-        const reposResponse = await fetch(
-          `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`
-        );
-        const reposData = await reposResponse.json();
-        setRepos(reposData);
-
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching GitHub data:", error);
-        toast({
-          title: "Error loading GitHub data",
-          description: "Unable to fetch GitHub information. Please try again later.",
-          variant: "destructive",
-        });
-        setLoading(false);
-      }
-    };
-
-    if (isVisible) {
-      fetchGitHubData();
-    }
-  }, [isVisible, toast]);
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-  };
+    if (!isVisible) return;
+    Promise.all([fetch(`https://api.github.com/users/${USERNAME}`).then((response) => response.json()), fetch(`https://api.github.com/users/${USERNAME}/repos?sort=updated&per_page=4`).then((response) => response.json())])
+      .then(([profile, repositories]) => { setUser(profile); setRepos(Array.isArray(repositories) ? repositories : []); })
+      .finally(() => setLoading(false));
+  }, [isVisible]);
 
   return (
-    <section
-      ref={ref}
-      id="github"
-      className={`py-24 px-6 lg:px-8 relative overflow-hidden transition-all duration-1000 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
-    >
-      <div className="container max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
-            GitHub Activity
-          </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full mx-auto shadow-[0_0_20px_rgba(0,255,255,0.5)]" />
-          <p className="text-muted-foreground mt-4">Real-time data from my GitHub profile</p>
-        </div>
-
-        {loading ? (
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-          </div>
-        ) : (
-          <div className="space-y-12">
-            {/* Stats Overview */}
-            {userData && (
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">{userData.public_repos}</div>
-                  <div className="text-sm text-muted-foreground">Public Repositories</div>
-                </Card>
-                <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">{userData.followers}</div>
-                  <div className="text-sm text-muted-foreground">Followers</div>
-                </Card>
-                <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">{userData.following}</div>
-                  <div className="text-sm text-muted-foreground">Following</div>
-                </Card>
-              </div>
-            )}
-
-            {/* Pinned/Top Repositories */}
-            <div>
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <Github className="w-6 h-6 text-primary" />
-                Top Repositories
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {repos.map((repo, index) => (
-                  <Card
-                    key={repo.id}
-                    className={`p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10 group duration-500 ${
-                      isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
-                    }`}
-                    style={{ transitionDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="space-y-4">
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <h4 className="text-lg font-bold group-hover:text-primary transition-colors mb-2">
-                            {repo.name}
-                          </h4>
-                          <p className="text-sm text-muted-foreground line-clamp-2">
-                            {repo.description || "No description available"}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        {repo.language && (
-                          <div className="flex items-center gap-1">
-                            <div className="w-3 h-3 rounded-full bg-primary" />
-                            <span>{repo.language}</span>
-                          </div>
-                        )}
-                        <div className="flex items-center gap-1">
-                          <Star className="w-4 h-4" />
-                          <span>{repo.stargazers_count}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <GitFork className="w-4 h-4" />
-                          <span>{repo.forks_count}</span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between pt-2 border-t border-border/50">
-                        <span className="text-xs text-muted-foreground">
-                          Updated {formatDate(repo.updated_at)}
-                        </span>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          className="text-primary hover:text-primary/80"
-                          onClick={() => window.open(repo.html_url, "_blank")}
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-
-            {/* View GitHub Profile */}
-            <div className="text-center">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90"
-                onClick={() => window.open(`https://github.com/${GITHUB_USERNAME}`, "_blank")}
-              >
-                <Github className="mr-2 w-5 h-5" />
-                View Full GitHub Profile
-              </Button>
-            </div>
-          </div>
-        )}
+    <section ref={ref} id="github" className="border-b border-border px-6 py-24 lg:px-8">
+      <div className="container mx-auto max-w-6xl">
+        <div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="section-label">Open source</p><h2 className="section-title">GitHub activity</h2></div>{user && <p className="text-sm text-muted-foreground">{user.public_repos} public repositories · {user.followers} followers</p>}</div>
+        {loading ? <p className="py-10 text-sm text-muted-foreground">Loading repository data…</p> : <div className="grid border border-border md:grid-cols-2">{repos.map((repo) => <article key={repo.id} className="border-b border-border p-6 even:md:border-l md:[&:nth-last-child(-n+2)]:border-b-0"><div className="flex justify-between"><h3 className="font-semibold">{repo.name}</h3><Button size="icon" variant="ghost" onClick={() => window.open(repo.html_url, "_blank")} aria-label={`Open ${repo.name}`}><ExternalLink className="h-4 w-4" /></Button></div><p className="mt-3 min-h-12 text-sm leading-6 text-muted-foreground">{repo.description || "Repository on GitHub"}</p><div className="mt-5 flex gap-4 text-xs text-muted-foreground">{repo.language && <span>{repo.language}</span>}<span className="flex items-center gap-1"><Star className="h-3.5 w-3.5" />{repo.stargazers_count}</span><span className="flex items-center gap-1"><GitFork className="h-3.5 w-3.5" />{repo.forks_count}</span></div></article>)}</div>}
+        <Button className="mt-8" variant="outline" onClick={() => window.open(`https://github.com/${USERNAME}`, "_blank")}><Github className="mr-2 h-4 w-4" />View GitHub profile</Button>
       </div>
-
-      {/* Background Decoration */}
-      <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-20 right-10 w-64 h-64 bg-neural-blue/5 rounded-full blur-3xl pointer-events-none" />
     </section>
   );
 };
-
 export default GitHub;

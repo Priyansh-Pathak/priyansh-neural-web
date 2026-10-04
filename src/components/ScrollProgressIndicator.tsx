@@ -15,16 +15,16 @@ const ScrollProgressIndicator = () => {
       setScrollProgress(Math.min(progress, 100));
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Initial calculation
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-muted/20 pointer-events-none">
+    <div className="pointer-events-none fixed left-0 right-0 top-0 z-50 h-0.5 bg-muted">
       <div
-        className="h-full bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta transition-all duration-150 ease-out shadow-[0_0_10px_rgba(0,255,255,0.5)]"
+        className="h-full bg-primary transition-all duration-150 ease-out"
         style={{ width: `${scrollProgress}%` }}
       />
     </div>
