@@ -29,8 +29,8 @@ const AnimatedSection = ({
         }
       },
       {
-        threshold: 0.15,
-        rootMargin: "0px 0px -100px 0px",
+        threshold: 0.06,
+        rootMargin: "0px 0px -40px 0px",
       }
     );
 
@@ -58,7 +58,7 @@ const AnimatedSection = ({
 
     switch (animation) {
       case "fade-up":
-        return { opacity: 0, transform: "translateY(60px)" };
+        return { opacity: 0, transform: "translateY(18px)" };
       case "fade-left":
         return { opacity: 0, transform: "translateX(-80px)" };
       case "fade-right":
@@ -83,7 +83,7 @@ const AnimatedSection = ({
     <section
       ref={ref}
       id={id}
-      className={`transition-all duration-1000 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] ${className}`}
+      className={`transition-all duration-700 ease-out ${className}`}
       style={{
         ...getInitialStyles(),
       }}

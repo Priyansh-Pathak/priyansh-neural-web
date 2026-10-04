@@ -1,164 +1,71 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Download, Sparkles } from "lucide-react";
-import NeuralNetwork from "@/components/NeuralNetwork";
-import TypingAnimation from "@/components/TypingAnimation";
-import heroBg from "@/assets/hero-neural-bg.jpg";
-const profilePhoto = "/website_photo.jpeg";
-const resumeUrl = "/resume-priyansh-pathak.pdf";
+import { ArrowDown, Download, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import resumeAsset from "@/assets/CV_Priyansh-2.pdf.asset.json";
 
-const roles = ["AI Developer", "ML Engineer", "Full Stack Developer", "Research Intern", "Problem Solver"];
+const profilePhoto = "/website_photo.jpeg";
 
 const Hero = () => {
   const navigate = useNavigate();
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Enhanced Animated Background */}
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-tech-darker via-background to-tech-dark" />
-        {/* Animated Gradient Orbs */}
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-neon-cyan/30 rounded-full blur-[120px] animate-glow-pulse" />
-        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-neon-purple/30 rounded-full blur-[120px] animate-glow-pulse" style={{ animationDelay: "1.5s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-magenta/20 rounded-full blur-[150px] animate-pulse" />
-      </div>
 
-      {/* Neural Network Animation */}
-      <NeuralNetwork />
+  const downloadResume = () => {
+    const link = document.createElement("a");
+    link.href = resumeAsset.url;
+    link.download = "Priyansh_Pathak_CV.pdf";
+    link.click();
+  };
 
-      {/* Content */}
-      <div className="container relative z-10 px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text */}
-          <div className="space-y-8 animate-fade-in">
-            {/* Enhanced Badge */}
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 backdrop-blur-md border border-neon-cyan/30 shadow-[0_0_20px_rgba(0,255,255,0.3)] hover:shadow-[0_0_30px_rgba(0,255,255,0.5)] transition-all duration-300">
-              <Sparkles className="w-4 h-4 text-neon-cyan animate-pulse" />
-              <span className="text-sm font-semibold bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent">AI/ML Engineer</span>
-            </div>
+  return (
+    <section className="relative flex min-h-[92vh] items-center border-b border-border px-6 pb-16 pt-28 lg:px-8">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.35fr_0.65fr]">
+          <div>
+            <p className="mb-6 text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+              AI/ML Researcher & Engineer
+            </p>
+            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.04] text-foreground sm:text-6xl lg:text-7xl">
+              Priyansh Pathak
+            </h1>
+            <p className="mt-7 max-w-3xl text-xl leading-relaxed text-muted-foreground lg:text-2xl">
+              Computer science undergraduate working across computer vision, deep learning, robot learning, and intelligent systems.
+            </p>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground">
+              Research experience at Carnegie Mellon University, IIT Ropar, DRDO CAIR, and IIT Mandi, with peer-reviewed work in attendance systems and medical imaging.
+            </p>
 
-            {/* Enhanced Name & Title */}
-            <div className="space-y-4">
-              <h1 className="text-5xl lg:text-7xl font-bold tracking-tight">
-                <span className="text-foreground drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">Priyansh</span>
-                <span className="block bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent animate-neon-glow">
-                  Pathak
-                </span>
-              </h1>
-              <div className="h-1.5 w-32 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta rounded-full shadow-[0_0_20px_rgba(0,255,255,0.6)] animate-border-flow" style={{ backgroundSize: "200% 200%" }} />
-            </div>
-
-            {/* Enhanced Tagline with Typing Animation */}
-            <div className="text-xl lg:text-2xl text-foreground/90 leading-relaxed">
-              <p className="mb-2">
-                I'm a <TypingAnimation texts={roles} typingSpeed={80} deletingSpeed={40} pauseTime={2000} />
-              </p>
-              <p>
-                Building{" "}
-                <span className="text-neon-cyan font-bold drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]">intelligent systems</span> &{" "}
-                <span className="text-neon-purple font-bold drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]">production-ready web apps</span>.
-              </p>
-            </div>
-
-            {/* Bio */}
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">Passionate CS undergraduate specializing in AI/ML. Experienced in responsive web applications and deploying AI models using industry-standard tools. Multiple internships and hackathons demonstrating adaptability and strong coding skills.</p>
-
-            {/* Enhanced Stats */}
-            <div className="flex flex-wrap gap-8">
-              {[{
-              label: "Internships",
-              value: "9+",
-              color: "neon-cyan"
-            }, {
-              label: "Projects",
-              value: "15+",
-              color: "neon-purple"
-            }].map(stat => <div key={stat.label} className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-                  <div className="relative px-6 py-4 rounded-xl border border-neon-cyan/30 bg-card/50 backdrop-blur-sm hover:border-neon-cyan/60 transition-all duration-300">
-                    <div className={`text-3xl font-bold bg-gradient-to-br from-${stat.color} to-neon-purple bg-clip-text text-transparent`}>{stat.value}</div>
-                    <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
-                  </div>
-                </div>)}
-            </div>
-
-            {/* Enhanced CTAs */}
-            <div className="flex flex-wrap gap-4">
-              <Button 
-                size="lg" 
-                className="group relative bg-gradient-to-r from-neon-cyan to-neon-purple text-background font-bold overflow-hidden hover:shadow-[0_0_30px_rgba(0,255,255,0.6)] transition-all duration-300 border-0"
-                onClick={() => {
-                  const projectsSection = document.querySelector("#projects");
-                  projectsSection?.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
-              >
-                <span className="relative z-10">View Projects</span>
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform relative z-10" />
-                <div className="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Button size="lg" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
+                View selected work <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-neon-purple/50 hover:border-neon-purple hover:bg-neon-purple/10 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all duration-300 backdrop-blur-sm bg-card/30"
-                onClick={() => navigate("/resume")}
-              >
-                View Resume
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-neon-magenta/50 hover:border-neon-magenta hover:bg-neon-magenta/10 hover:shadow-[0_0_20px_rgba(236,72,153,0.4)] transition-all duration-300 backdrop-blur-sm bg-card/30"
-                onClick={() => {
-                  const link = document.createElement("a");
-                  link.href = resumeUrl;
-                  link.download = "Priyansh_Pathak_Resume.pdf";
-                  link.click();
-                }}
-              >
-                <Download className="mr-2 w-4 h-4" />
-                Download Resume
+              <Button size="lg" variant="outline" onClick={() => navigate("/resume")}>View CV</Button>
+              <Button size="lg" variant="ghost" onClick={downloadResume}>
+                <Download className="mr-2 h-4 w-4" /> Download CV
               </Button>
             </div>
+
+            <dl className="mt-14 grid max-w-2xl grid-cols-3 border-y border-border py-5">
+              <div><dt className="text-xs uppercase text-muted-foreground">CGPA</dt><dd className="mt-1 text-xl font-semibold">9.23</dd></div>
+              <div className="border-l border-border pl-6"><dt className="text-xs uppercase text-muted-foreground">Experience</dt><dd className="mt-1 text-xl font-semibold">8 roles</dd></div>
+              <div className="border-l border-border pl-6"><dt className="text-xs uppercase text-muted-foreground">Publications</dt><dd className="mt-1 text-xl font-semibold">2 accepted</dd></div>
+            </dl>
           </div>
 
-          {/* Round Profile Photo with Glass Morphism */}
-          <div className="relative flex justify-center lg:justify-end animate-fade-in">
-            <div className="relative group">
-              {/* Subtle ambient glow with fade effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/30 via-neon-purple/20 to-transparent rounded-full blur-[80px] opacity-60 animate-pulse" style={{ animationDuration: '4s' }} />
-              
-              {/* Glass morphism container - Round */}
-              <div className="relative w-80 h-80 lg:w-96 lg:h-96">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-neon-cyan/5 via-background/40 to-neon-purple/5 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden">
-                  {/* Inner glow border - static, no animation */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-neon-cyan/5 via-transparent to-neon-purple/5" />
-                  
-                  {/* Image */}
-                  <div className="absolute inset-2 rounded-full overflow-hidden">
-                    <img 
-                      src={profilePhoto} 
-                      alt="Priyansh Pathak - AI/ML Engineer" 
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Subtle overlay with fade */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
-                  </div>
-                </div>
-
-                {/* Minimal accent corners - static, no animation */}
-                <div className="absolute -top-2 -left-2 w-10 h-10 border-l-2 border-t-2 border-neon-cyan/30 rounded-tl-xl" />
-                <div className="absolute -bottom-2 -right-2 w-10 h-10 border-r-2 border-b-2 border-neon-purple/30 rounded-br-xl" />
-              </div>
+          <div className="mx-auto w-full max-w-sm lg:mx-0 lg:ml-auto">
+            <div className="aspect-[4/5] overflow-hidden border border-border bg-card p-2">
+              <img src={profilePhoto} alt="Priyansh Pathak" className="h-full w-full object-cover object-top" />
+            </div>
+            <div className="mt-4 flex items-center justify-between text-sm text-muted-foreground">
+              <span>Chennai, India</span>
+              <span>Open to research collaborations</span>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Enhanced Scroll Indicator - Very Slow Bounce */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-[bounce_3s_ease-in-out_infinite]">
-        <div className="w-6 h-10 rounded-full border-2 border-neon-cyan/50 flex justify-center p-2 backdrop-blur-sm bg-card/20 shadow-[0_0_20px_rgba(0,255,255,0.3)]">
-          <div className="w-1.5 h-3 bg-gradient-to-b from-neon-cyan to-transparent rounded-full animate-pulse" />
-        </div>
-      </div>
-    </section>;
+      <button aria-label="Scroll to profile" onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })} className="absolute bottom-6 left-1/2 -translate-x-1/2 text-muted-foreground transition-colors hover:text-foreground">
+        <ArrowDown className="h-5 w-5" />
+      </button>
+    </section>
+  );
 };
+
 export default Hero;

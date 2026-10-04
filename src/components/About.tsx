@@ -1,122 +1,57 @@
-import { GraduationCap, BookOpen } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { GraduationCap } from "lucide-react";
 
+const education = [
+  {
+    institution: "SRM Institute of Science and Technology",
+    location: "Chennai, India",
+    degree: "B.Tech in Computer Science & Engineering — AI/ML Specialization",
+    period: "Aug 2023 – May 2027",
+    detail: "CGPA: 9.23 / 10",
+  },
+  {
+    institution: "Indian Institute of Technology Ropar",
+    location: "Remote",
+    degree: "Major in Artificial Intelligence",
+    period: "Sept 2024 – Feb 2026",
+    detail: "Advanced study in machine learning, deep learning, and computer vision",
+  },
+];
 
-const About = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
-  const education = [
-    {
-      institution: "SRM Institute of Science and Technology",
-      degree: "B.Tech in Computer Science (AI & ML)",
-      period: "Aug 2023 – May 2027",
-      coursework: ["Machine Learning", "Data Structures", "Software Engineering", "DBMS"],
-    },
-    {
-      institution: "IIT Ropar",
-      degree: "Minor in Artificial Intelligence",
-      period: "Sept 2024 – Feb 2026",
-      coursework: ["Deep Learning", "Neural Networks", "Computer Vision"],
-    },
-  ];
-
-  return (
-    <section 
-      ref={ref}
-      id="about" 
-      className={`py-24 px-6 lg:px-8 relative overflow-hidden transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-    >
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-10 w-96 h-96 bg-neon-purple/10 rounded-full blur-[120px] animate-pulse" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-neon-cyan/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: "1.5s" }} />
-      </div>
-
-      <div className="container max-w-6xl mx-auto relative z-10">
-        {/* Enhanced Section Header */}
-        <div className="text-center mb-20 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
-          <div className="inline-block mb-4 px-6 py-2 rounded-full bg-gradient-to-r from-neon-purple/10 to-neon-magenta/10 backdrop-blur-sm border border-neon-purple/30">
-            <span className="text-sm font-semibold bg-gradient-to-r from-neon-purple to-neon-magenta bg-clip-text text-transparent">My Journey</span>
-          </div>
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
-            About Me
-          </h2>
-          <div className="h-1.5 w-32 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta rounded-full mx-auto shadow-[0_0_20px_rgba(168,85,247,0.5)] animate-border-flow" style={{ backgroundSize: "200% 200%" }} />
+const About = () => (
+  <section id="about" className="border-b border-border px-6 py-24 lg:px-8">
+    <div className="container mx-auto max-w-6xl">
+      <div className="grid gap-14 lg:grid-cols-[0.65fr_1.35fr]">
+        <div>
+          <p className="section-label">Profile</p>
+          <h2 className="section-title">Research-minded engineering, grounded in real systems.</h2>
         </div>
+        <div>
+          <p className="max-w-3xl text-lg leading-8 text-muted-foreground">
+            I work at the intersection of machine learning research and applied engineering. My experience spans embodied AI, computational biology, document intelligence, defense navigation, fairness, and computer vision. I value reproducible experiments, careful evaluation, and systems that remain useful outside controlled benchmarks.
+          </p>
 
-        {/* Enhanced Bio */}
-        <div className="mb-20 max-w-3xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
-          <div className="relative p-8 rounded-2xl bg-gradient-to-br from-card/60 via-card/40 to-card/60 backdrop-blur-xl border border-neon-cyan/20 shadow-[0_0_40px_rgba(0,255,255,0.2)]">
-            <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/5 via-transparent to-neon-purple/5 rounded-2xl" />
-            <p className="relative text-lg text-foreground/90 leading-relaxed text-center">
-              Passionate and driven CS undergraduate specializing in <span className="text-neon-cyan font-bold">AI/ML</span>. Experienced in responsive 
-              web applications and deploying AI models using industry-standard tools. Multiple internships 
-              and hackathons demonstrating <span className="text-neon-purple font-bold">adaptability</span>, problem-solving, and strong coding skills. 
-              Seeking impactful software development and research roles.
-            </p>
+          <div className="mt-14 flex items-center gap-3 border-b border-border pb-4">
+            <GraduationCap className="h-5 w-5 text-primary" />
+            <h3 className="text-lg font-semibold">Education</h3>
           </div>
-        </div>
-
-        {/* Enhanced Education Timeline */}
-        <div className="space-y-8">
-          <div className="flex items-center justify-center gap-3 mb-12 opacity-0 animate-fade-in" style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}>
-            <div className="p-3 rounded-xl bg-gradient-to-br from-neon-purple/20 to-neon-magenta/20 backdrop-blur-sm border border-neon-purple/30">
-              <GraduationCap className="w-7 h-7 text-neon-purple" />
-            </div>
-            <h3 className="text-3xl font-bold bg-gradient-to-r from-neon-purple to-neon-magenta bg-clip-text text-transparent">Education</h3>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {education.map((edu, index) => (
-              <Card 
-                key={index} 
-                className="group relative p-8 bg-gradient-to-br from-card/60 via-card/40 to-card/60 backdrop-blur-xl border border-neon-purple/20 hover:border-neon-purple/60 transition-all duration-500 hover:shadow-[0_0_40px_rgba(168,85,247,0.3)] opacity-0 animate-scale-in overflow-hidden"
-                style={{ animationDelay: `${0.7 + index * 0.15}s`, animationFillMode: "forwards" }}
-              >
-                {/* Glow Effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-neon-purple/20 to-neon-magenta/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 -z-10" />
-                
-                <div className="relative space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="relative p-3 rounded-xl bg-gradient-to-br from-neon-purple/20 to-neon-magenta/20 group-hover:from-neon-purple/30 group-hover:to-neon-magenta/30 transition-all duration-300 backdrop-blur-sm border border-neon-purple/30">
-                      <BookOpen className="w-6 h-6 text-neon-purple group-hover:scale-110 transition-transform duration-300" />
-                      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-neon-purple/20 to-neon-magenta/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-bold text-xl mb-2 group-hover:text-neon-purple transition-colors duration-300">
-                        {edu.institution}
-                      </h4>
-                      <p className="text-foreground/80 mb-3 font-medium">{edu.degree}</p>
-                      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-neon-purple/10 to-neon-magenta/10 border border-neon-purple/30">
-                        <span className="text-sm text-neon-purple font-semibold">{edu.period}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="pt-6 border-t border-neon-purple/20">
-                    <p className="text-sm text-muted-foreground mb-3 font-medium">Relevant Coursework:</p>
-                    <div className="flex flex-wrap gap-2.5">
-                      {edu.coursework.map((course, i) => (
-                        <span 
-                          key={i}
-                          className="px-4 py-2 rounded-lg bg-gradient-to-r from-muted/80 to-muted/60 backdrop-blur-sm text-sm font-medium border border-border/50 hover:border-neon-purple/50 hover:text-neon-purple transition-all duration-300 cursor-default hover:shadow-[0_0_15px_rgba(168,85,247,0.3)]"
-                        >
-                          {course}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+          <div className="divide-y divide-border">
+            {education.map((item) => (
+              <article key={item.institution} className="grid gap-3 py-7 md:grid-cols-[1fr_auto]">
+                <div>
+                  <h4 className="font-semibold text-foreground">{item.institution}</h4>
+                  <p className="mt-2 text-muted-foreground">{item.degree}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{item.detail}</p>
                 </div>
-              </Card>
+                <div className="text-left text-sm text-muted-foreground md:text-right">
+                  <p>{item.period}</p><p className="mt-1">{item.location}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default About;

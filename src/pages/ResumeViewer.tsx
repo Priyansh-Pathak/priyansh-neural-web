@@ -1,57 +1,29 @@
 import { Download, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-
-const resumeUrl = "/resume-priyansh-pathak.pdf";
+import resumeAsset from "@/assets/CV_Priyansh-2.pdf.asset.json";
 
 const ResumeViewer = () => {
   const navigate = useNavigate();
-
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = resumeUrl;
-    link.download = "Priyansh_Pathak_Resume.pdf";
-    document.body.appendChild(link);
+    link.href = resumeAsset.url;
+    link.download = "Priyansh_Pathak_CV.pdf";
     link.click();
-    document.body.removeChild(link);
   };
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border shadow-lg">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <h1 className="text-xl font-bold bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
-            Resume - Priyansh Pathak
-          </h1>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/95">
+        <div className="container mx-auto flex h-16 items-center justify-between px-4">
+          <div><h1 className="font-semibold">Priyansh Pathak</h1><p className="text-xs text-muted-foreground">Curriculum Vitae</p></div>
           <div className="flex items-center gap-2">
-            <Button
-              onClick={handleDownload}
-              variant="outline"
-              className="border-primary/50 hover:bg-primary/10"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Download
-            </Button>
-            <Button
-              onClick={() => navigate("/")}
-              variant="ghost"
-              size="icon"
-            >
-              <X className="w-5 h-5" />
-            </Button>
+            <Button onClick={handleDownload} variant="outline"><Download className="mr-2 h-4 w-4" />Download</Button>
+            <Button onClick={() => navigate("/")} variant="ghost" size="icon" aria-label="Close CV"><X className="h-5 w-5" /></Button>
           </div>
         </div>
-      </div>
-
-      {/* PDF Viewer */}
-      <div className="pt-16 h-screen">
-        <iframe
-          src={resumeUrl}
-          className="w-full h-full border-0"
-          title="Priyansh Pathak Resume"
-        />
-      </div>
+      </header>
+      <main className="h-screen pt-16"><iframe src={resumeAsset.url} className="h-full w-full border-0" title="Priyansh Pathak CV" /></main>
     </div>
   );
 };
