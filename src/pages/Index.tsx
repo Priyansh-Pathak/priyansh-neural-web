@@ -11,7 +11,6 @@ import Projects from "@/components/Projects";
 import GitHub from "@/components/GitHub";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import FloatingActionButton from "@/components/FloatingActionButton";
 import BackToTop from "@/components/BackToTop";
 import AnimatedSection from "@/components/AnimatedSection";
 
@@ -99,7 +98,6 @@ const Index = () => {
       </AnimatedSection>
       
       <Footer />
-      <FloatingActionButton />
       <BackToTop />
     </div>
   );

@@ -1,13 +1,13 @@
 import { Download, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import resumeAsset from "@/assets/CV_Priyansh-3.pdf.asset.json";
+const resumeUrl = "/resume-priyansh-pathak.pdf";
 
 const ResumeViewer = () => {
   const navigate = useNavigate();
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = resumeAsset.url;
+    link.href = resumeUrl;
     link.download = "Priyansh_Pathak_CV.pdf";
     link.click();
   };
@@ -23,7 +23,7 @@ const ResumeViewer = () => {
           </div>
         </div>
       </header>
-      <main className="h-screen pt-16"><iframe src={resumeAsset.url} className="h-full w-full border-0" title="Priyansh Pathak CV" /></main>
+      <main className="h-screen pt-16"><iframe src={resumeUrl} className="h-full w-full border-0" title="Priyansh Pathak CV" /></main>
     </div>
   );
 };

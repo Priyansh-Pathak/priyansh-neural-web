@@ -1,17 +1,17 @@
 import { ArrowDown, Download, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import resumeAsset from "@/assets/CV_Priyansh-3.pdf.asset.json";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 const profilePhoto = "/website_photo.jpeg";
+const resumeUrl = "/resume-priyansh-pathak.pdf";
 
 const Hero = () => {
   const navigate = useNavigate();
 
   const downloadResume = () => {
     const link = document.createElement("a");
-    link.href = resumeAsset.url;
+    link.href = resumeUrl;
     link.download = "Priyansh_Pathak_CV.pdf";
     link.click();
   };

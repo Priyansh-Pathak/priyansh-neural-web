@@ -9,7 +9,7 @@
 - [x] Replace the resume everywhere with the latest CV
 - [x] Align experience, publications, projects, skills, and profile links with the new CV
 - [x] Redesign the full portfolio as a restrained charcoal-and-navy professional interface
-- [ ] Verify desktop and mobile presentation, resume viewing, and downloads
+- [x] Verify desktop and mobile presentation, resume viewing, and downloads
 - [x] Reposition the portfolio as an industry–research neutral AI/ML engineering profile
 - [x] Make projects the primary content after About, followed by Experience and Skills
 - [x] Add concise Education and Achievements sections using verified CV content only

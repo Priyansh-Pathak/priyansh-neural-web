@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import resumeAsset from "@/assets/CV_Priyansh-3.pdf.asset.json";
+const resumeUrl = "/resume-priyansh-pathak.pdf";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -22,7 +22,7 @@ const Contact = () => {
       <a className="flex items-center gap-3 hover:text-primary" href="mailto:pripat1008@gmail.com"><Mail className="h-4 w-4" />pripat1008@gmail.com</a>
       <a className="flex items-center gap-3 hover:text-primary" href="https://linkedin.com/in/pripat1008" target="_blank" rel="noreferrer"><Linkedin className="h-4 w-4" />LinkedIn</a>
       <a className="flex items-center gap-3 hover:text-primary" href="https://github.com/pripat1008" target="_blank" rel="noreferrer"><Github className="h-4 w-4" />GitHub</a>
-      <a className="flex items-center gap-3 hover:text-primary" href={resumeAsset.url} download="Priyansh_Pathak_CV.pdf"><Download className="h-4 w-4" />Download resume</a>
+      <a className="flex items-center gap-3 hover:text-primary" href={resumeUrl} download="Priyansh_Pathak_CV.pdf"><Download className="h-4 w-4" />Download resume</a>
     </div></div>
     <form onSubmit={submit} className="border border-border bg-card p-6 md:p-8"><div className="grid gap-5 sm:grid-cols-2"><div><label className="mb-2 block text-sm font-medium">Name</label><Input value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} required /></div><div><label className="mb-2 block text-sm font-medium">Email</label><Input type="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} required /></div></div><div className="mt-5"><label className="mb-2 block text-sm font-medium">Message</label><Textarea rows={5} value={form.message} onChange={(event) => setForm({ ...form, message: event.target.value })} required /></div><Button className="mt-5" type="submit" disabled={sending}><Send className="mr-2 h-4 w-4" />{sending ? "Sending…" : "Send message"}</Button></form>
   </div></div></section>;
