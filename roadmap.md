@@ -6,12 +6,12 @@
 - [x] Replace homepage profile photo
 - [x] Remove scroll and cursor rerenders that slowed lower sections
 - [x] Verify updated assets and smooth page loading
-- [ ] Replace the resume everywhere with CV_Priyansh-2.pdf
-- [ ] Align experience, publications, projects, skills, and profile links with the new CV
-- [ ] Redesign the full portfolio as a restrained charcoal-and-navy professional interface
+- [x] Replace the resume everywhere with the latest CV
+- [x] Align experience, publications, projects, skills, and profile links with the new CV
+- [x] Redesign the full portfolio as a restrained charcoal-and-navy professional interface
 - [ ] Verify desktop and mobile presentation, resume viewing, and downloads
-- [ ] Reposition the portfolio as an industry–research neutral AI/ML engineering profile
-- [ ] Make projects the primary content after About, followed by Experience and Skills
-- [ ] Add concise Education and Achievements sections using verified CV content only
-- [ ] Add restrained project actions and persistent resume access across navigation, hero, and contact
-- [ ] Use CV_Priyansh-3.pdf as the latest source and resume asset
+- [x] Reposition the portfolio as an industry–research neutral AI/ML engineering profile
+- [x] Make projects the primary content after About, followed by Experience and Skills
+- [x] Add concise Education and Achievements sections using verified CV content only
+- [x] Add restrained project actions and persistent resume access across navigation, hero, and contact
+- [x] Use CV_Priyansh-3.pdf as the latest source and resume asset
