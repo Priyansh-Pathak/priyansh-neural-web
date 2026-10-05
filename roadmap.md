@@ -10,3 +10,8 @@
 - [ ] Align experience, publications, projects, skills, and profile links with the new CV
 - [ ] Redesign the full portfolio as a restrained charcoal-and-navy professional interface
 - [ ] Verify desktop and mobile presentation, resume viewing, and downloads
+- [ ] Reposition the portfolio as an industry–research neutral AI/ML engineering profile
+- [ ] Make projects the primary content after About, followed by Experience and Skills
+- [ ] Add concise Education and Achievements sections using verified CV content only
+- [ ] Add restrained project actions and persistent resume access across navigation, hero, and contact
+- [ ] Use CV_Priyansh-3.pdf as the latest source and resume asset
