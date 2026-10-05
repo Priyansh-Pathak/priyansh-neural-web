@@ -1,138 +1,26 @@
-import { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "next-themes";
-import { useToast } from "@/hooks/use-toast";
+import { Button } from "@/components/ui/button";
+
+const links = [["Home", "hero"], ["About", "about"], ["Projects", "projects"], ["Experience", "experience"], ["Skills", "skills"], ["Research", "publications"], ["Education", "education"], ["Contact", "contact"]] as const;
 
 const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { toast } = useToast();
+  const navigate = useNavigate();
+  useEffect(() => { const update = () => setScrolled(window.scrollY > 16); window.addEventListener("scroll", update, { passive: true }); return () => window.removeEventListener("scroll", update); }, []);
+  const move = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setOpen(false); };
 
-  const navLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Publications", href: "#publications" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "GitHub", href: "#github" },
-    { name: "Contact", href: "#contact" },
-  ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setIsMobileMenuOpen(false);
-    }
-  };
-
-  const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
-    toast({
-      title: `${newTheme === "dark" ? "Dark" : "Light"} mode enabled`,
-      description: "Your preference has been saved.",
-      duration: 2000,
-    });
-  };
-
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 border-b border-border"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <button
-            onClick={() => scrollToSection("#hero")}
-            className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
-          >
-            Priyansh
-          </button>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollToSection(link.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-              </button>
-            ))}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="ml-2 relative group"
-              title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            >
-              <div className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300" />
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all duration-500 dark:-rotate-90 dark:scale-0 relative z-10" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all duration-500 dark:rotate-0 dark:scale-100 z-10" />
-              <span className="sr-only">Toggle theme (Current: {theme})</span>
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button & Theme Toggle */}
-          <div className="md:hidden flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleTheme}
-              className="relative group"
-              title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            >
-              <div className="absolute inset-0 bg-primary/10 rounded-md scale-0 group-hover:scale-100 transition-transform duration-300" />
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all duration-500 dark:-rotate-90 dark:scale-0 relative z-10" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all duration-500 dark:rotate-0 dark:scale-100 z-10" />
-              <span className="sr-only">Toggle theme (Current: {theme})</span>
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? <X /> : <Menu />}
-            </Button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border bg-card/95 backdrop-blur-lg">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollToSection(link.href)}
-                className="block w-full text-left px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
-              >
-                {link.name}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-    </nav>
-  );
+  return <nav className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${scrolled || open ? "border-border bg-background/95" : "border-transparent bg-background/80"}`}>
+    <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+      <button onClick={() => move("hero")} className="font-semibold">Priyansh Pathak</button>
+      <div className="hidden items-center gap-5 lg:flex">{links.map(([label, id]) => <button key={id} onClick={() => move(id)} className="text-sm text-muted-foreground hover:text-foreground">{label}</button>)}<Button size="sm" variant="outline" onClick={() => navigate("/resume")}>Resume</Button><Button size="icon" variant="ghost" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label="Toggle theme"><Sun className="h-4 w-4 dark:hidden" /><Moon className="hidden h-4 w-4 dark:block" /></Button></div>
+      <div className="flex items-center gap-1 lg:hidden"><Button size="icon" variant="ghost" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label="Toggle theme"><Sun className="h-4 w-4 dark:hidden" /><Moon className="hidden h-4 w-4 dark:block" /></Button><Button size="icon" variant="ghost" onClick={() => setOpen(!open)} aria-label="Toggle navigation">{open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</Button></div>
+    </div>
+    {open && <div className="border-t border-border bg-background px-4 py-4 lg:hidden">{links.map(([label, id]) => <button key={id} onClick={() => move(id)} className="block w-full border-b border-border py-3 text-left text-sm">{label}</button>)}<Button className="mt-4 w-full" variant="outline" onClick={() => navigate("/resume")}>Resume</Button></div>}
+  </nav>;
 };
-
 export default Navigation;

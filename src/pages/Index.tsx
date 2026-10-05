@@ -4,20 +4,20 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Publications from "@/components/Publications";
+import Education from "@/components/Education";
+import Achievements from "@/components/Achievements";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import GitHub from "@/components/GitHub";
 import Contact from "@/components/Contact";
-import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
-import FloatingActionButton from "@/components/FloatingActionButton";
 import BackToTop from "@/components/BackToTop";
 import AnimatedSection from "@/components/AnimatedSection";
 
 import ScrollProgressIndicator from "@/components/ScrollProgressIndicator";
 
 const Index = () => {
-  const sections = ["hero", "about", "experience", "publications", "skills", "projects", "github", "testimonials", "contact"];
+  const sections = ["hero", "about", "projects", "experience", "skills", "publications", "education", "achievements", "github", "contact"];
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -65,36 +65,39 @@ const Index = () => {
         <About />
       </AnimatedSection>
       
-      <AnimatedSection animation="slide-up" delay={50}>
+      <AnimatedSection animation="fade-up" delay={50}>
+        <Projects />
+      </AnimatedSection>
+      
+      <AnimatedSection animation="fade-up" delay={50}>
         <Experience />
       </AnimatedSection>
 
-      <AnimatedSection animation="fade-right" delay={50}>
-        <Publications />
-      </AnimatedSection>
-      
       <AnimatedSection animation="fade-up" delay={50}>
         <Skills />
       </AnimatedSection>
-      
+
       <AnimatedSection animation="fade-up" delay={50}>
-        <Projects />
+        <Publications />
+      </AnimatedSection>
+
+      <AnimatedSection animation="fade-up" delay={50}>
+        <Education />
+      </AnimatedSection>
+
+      <AnimatedSection animation="fade-up" delay={50}>
+        <Achievements />
       </AnimatedSection>
       
       <AnimatedSection animation="fade-up" delay={50}>
         <GitHub />
       </AnimatedSection>
       
-      <AnimatedSection animation="blur" delay={50}>
-        <Testimonials />
-      </AnimatedSection>
-      
-      <AnimatedSection animation="slide-up" delay={50}>
+      <AnimatedSection animation="fade-up" delay={50}>
         <Contact />
       </AnimatedSection>
       
       <Footer />
-      <FloatingActionButton />
       <BackToTop />
     </div>
   );

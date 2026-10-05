@@ -1,16 +1,17 @@
 import { ArrowDown, Download, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import resumeAsset from "@/assets/CV_Priyansh-2.pdf.asset.json";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const profilePhoto = "/website_photo.jpeg";
+const resumeUrl = "/resume-priyansh-pathak.pdf";
 
 const Hero = () => {
   const navigate = useNavigate();
 
   const downloadResume = () => {
     const link = document.createElement("a");
-    link.href = resumeAsset.url;
+    link.href = resumeUrl;
     link.download = "Priyansh_Pathak_CV.pdf";
     link.click();
   };
@@ -21,26 +22,32 @@ const Hero = () => {
         <div className="grid items-center gap-14 lg:grid-cols-[1.35fr_0.65fr]">
           <div>
             <p className="mb-6 text-sm font-semibold uppercase tracking-[0.18em] text-primary">
-              AI/ML Researcher & Engineer
+              AI/ML Engineer & Computer Science Student
             </p>
             <h1 className="max-w-4xl text-5xl font-semibold leading-[1.04] text-foreground sm:text-6xl lg:text-7xl">
               Priyansh Pathak
             </h1>
             <p className="mt-7 max-w-3xl text-xl leading-relaxed text-muted-foreground lg:text-2xl">
-              Computer science undergraduate working across computer vision, deep learning, robot learning, and intelligent systems.
+              Building practical AI and machine learning systems across Computer Vision, Deep Learning, and intelligent applications.
             </p>
             <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground">
-              Research experience at Carnegie Mellon University, IIT Ropar, DRDO CAIR, and IIT Mandi, with peer-reviewed work in attendance systems and medical imaging.
+              I combine hands-on AI engineering, software fundamentals, internship experience, and applied research to build useful technical systems.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
               <Button size="lg" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
                 View selected work <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" onClick={() => navigate("/resume")}>View CV</Button>
-              <Button size="lg" variant="ghost" onClick={downloadResume}>
+              <Button size="lg" variant="outline" onClick={downloadResume}>
                 <Download className="mr-2 h-4 w-4" /> Download CV
               </Button>
+            </div>
+
+            <div className="mt-6 flex items-center gap-5 text-sm text-muted-foreground">
+              <a className="flex items-center gap-1.5 hover:text-primary" href="https://github.com/pripat1008" target="_blank" rel="noreferrer"><Github className="h-4 w-4" />GitHub</a>
+              <a className="flex items-center gap-1.5 hover:text-primary" href="https://linkedin.com/in/pripat1008" target="_blank" rel="noreferrer"><Linkedin className="h-4 w-4" />LinkedIn</a>
+              <a className="flex items-center gap-1.5 hover:text-primary" href="mailto:pripat1008@gmail.com"><Mail className="h-4 w-4" />Email</a>
+              <button className="hover:text-primary" onClick={() => navigate("/resume")}>View CV</button>
             </div>
 
             <dl className="mt-14 grid max-w-2xl grid-cols-3 border-y border-border py-5">
@@ -52,7 +59,7 @@ const Hero = () => {
 
           <div className="mx-auto w-full max-w-sm lg:mx-0 lg:ml-auto">
             <div className="aspect-[4/5] overflow-hidden border border-border bg-card p-2">
-              <img src={profilePhoto} alt="Priyansh Pathak" className="h-full w-full object-cover object-top" />
+              <img src={profilePhoto} alt="Priyansh Pathak" loading="eager" decoding="async" className="h-full w-full object-cover object-top" />
             </div>
             <div className="mt-4 flex items-center justify-between text-sm text-muted-foreground">
               <span>Chennai, India</span>
