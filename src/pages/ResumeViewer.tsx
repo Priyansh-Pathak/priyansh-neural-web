@@ -1,7 +1,7 @@
 import { Download, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import resumeAsset from "@/assets/CV_Priyansh-2.pdf.asset.json";
+import resumeAsset from "@/assets/CV_Priyansh-3.pdf.asset.json";
 
 const ResumeViewer = () => {
   const navigate = useNavigate();
