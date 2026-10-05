@@ -9,7 +9,7 @@ const BackToTop = () => {
       setIsVisible(window.scrollY > 500);
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
@@ -23,7 +23,7 @@ const BackToTop = () => {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-6 right-6 z-50 p-3 rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple text-background shadow-lg shadow-neon-cyan/30 transition-all duration-300 hover:scale-110 hover:shadow-neon-cyan/50 ${
+      className={`fixed bottom-20 right-6 z-40 border border-border bg-background p-3 text-foreground shadow-sm transition-all duration-300 hover:border-primary ${
         isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-10 pointer-events-none"

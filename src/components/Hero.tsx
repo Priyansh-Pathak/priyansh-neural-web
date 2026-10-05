@@ -59,7 +59,7 @@ const Hero = () => {
 
           <div className="mx-auto w-full max-w-sm lg:mx-0 lg:ml-auto">
             <div className="aspect-[4/5] overflow-hidden border border-border bg-card p-2">
-              <img src={profilePhoto} alt="Priyansh Pathak" className="h-full w-full object-cover object-top" />
+              <img src={profilePhoto} alt="Priyansh Pathak" loading="eager" decoding="async" className="h-full w-full object-cover object-top" />
             </div>
             <div className="mt-4 flex items-center justify-between text-sm text-muted-foreground">
               <span>Chennai, India</span>
