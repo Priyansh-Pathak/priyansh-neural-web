@@ -1,190 +1,30 @@
-import { Mail, Phone, Send } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { useState } from "react";
+import { Download, Github, Linkedin, Mail, Send } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import emailjs from '@emailjs/browser';
-
+import resumeAsset from "@/assets/CV_Priyansh-3.pdf.asset.json";
 
 const Contact = () => {
-  const { ref, isVisible } = useScrollAnimation();
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      await emailjs.send(
-        'service_2kfszee',
-        'template_kd3n7tc',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-        },
-        'U85-nMUV6KmM-D1fd'
-      );
-
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-      setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      toast({
-        title: "Failed to send message",
-        description: "Please try again or contact me directly via email.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
+  const submit = async (event: React.FormEvent) => {
+    event.preventDefault(); setSending(true);
+    try { await emailjs.send("service_2kfszee", "template_kd3n7tc", { from_name: form.name, from_email: form.email, message: form.message }, "U85-nMUV6KmM-D1fd"); setForm({ name: "", email: "", message: "" }); toast({ title: "Message sent", description: "Thank you — I’ll reply as soon as possible." }); }
+    catch { toast({ title: "Message not sent", description: "Please contact me directly by email.", variant: "destructive" }); }
+    finally { setSending(false); }
   };
-
-  return (
-    <section 
-      ref={ref}
-      id="contact" 
-      className={`py-24 px-6 lg:px-8 relative overflow-hidden transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-    >
-      <div className="container max-w-5xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s", animationFillMode: "forwards" }}>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta bg-clip-text text-transparent">
-            Let's Build Something Intelligent
-          </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-neon-cyan to-neon-purple rounded-full mx-auto shadow-[0_0_20px_rgba(0,255,255,0.5)]" />
-          <p className="text-muted-foreground mt-4">
-            Have a project in mind? Let's collaborate and create something amazing.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Contact Info */}
-          <div className="space-y-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}>
-            <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all group">
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Mail className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Email</h3>
-                  <a 
-                    href="mailto:pripat1008@gmail.com" 
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    pripat1008@gmail.com
-                  </a>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all group">
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Phone className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Phone</h3>
-                  <a 
-                    href="tel:+919868782025" 
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    +91-9868782025
-                  </a>
-                </div>
-              </div>
-            </Card>
-
-            {/* Quick Info */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-neural-blue/10 border border-primary/20">
-              <h3 className="font-bold text-lg mb-3">Quick Facts</h3>
-              <ul className="space-y-2 text-sm text-foreground/80">
-                <li className="flex items-center gap-2">
-                  <span className="text-primary">▹</span>
-                  Available for internships & collaborations
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-primary">▹</span>
-                  Passionate about AI/ML research
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-primary">▹</span>
-                  Open to full-time opportunities (2027)
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 opacity-0 animate-fade-in" style={{ animationDelay: "0.5s", animationFillMode: "forwards" }}>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="text-sm font-medium mb-2 block">Name</label>
-                <Input 
-                  placeholder="Your name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                  className="bg-background/50"
-                />
-              </div>
-
-              <div>
-                <label className="text-sm font-medium mb-2 block">Email</label>
-                <Input 
-                  type="email"
-                  placeholder="your.email@example.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                  className="bg-background/50"
-                />
-              </div>
-
-              <div>
-                <label className="text-sm font-medium mb-2 block">Message</label>
-                <Textarea 
-                  placeholder="Tell me about your project or idea..."
-                  rows={5}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
-                  className="bg-background/50 resize-none"
-                />
-              </div>
-
-              <Button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50"
-                size="lg"
-              >
-                <Send className="mr-2 w-4 h-4" />
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          </Card>
-        </div>
-      </div>
-
-      {/* Background Decoration */}
-      <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-20 left-10 w-64 h-64 bg-neural-blue/5 rounded-full blur-3xl pointer-events-none" />
-    </section>
-  );
+  return <section id="contact" className="px-6 py-24 lg:px-8"><div className="container mx-auto max-w-6xl"><div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr]">
+    <div><p className="section-label">Contact</p><h2 className="section-title">Let’s build something useful.</h2><p className="mt-5 max-w-md leading-7 text-muted-foreground">Open to AI/ML internships, software engineering opportunities, research collaborations, and relevant technical projects.</p><div className="mt-9 space-y-3 text-sm">
+      <a className="flex items-center gap-3 hover:text-primary" href="mailto:pripat1008@gmail.com"><Mail className="h-4 w-4" />pripat1008@gmail.com</a>
+      <a className="flex items-center gap-3 hover:text-primary" href="https://linkedin.com/in/pripat1008" target="_blank" rel="noreferrer"><Linkedin className="h-4 w-4" />LinkedIn</a>
+      <a className="flex items-center gap-3 hover:text-primary" href="https://github.com/pripat1008" target="_blank" rel="noreferrer"><Github className="h-4 w-4" />GitHub</a>
+      <a className="flex items-center gap-3 hover:text-primary" href={resumeAsset.url} download="Priyansh_Pathak_CV.pdf"><Download className="h-4 w-4" />Download resume</a>
+    </div></div>
+    <form onSubmit={submit} className="border border-border bg-card p-6 md:p-8"><div className="grid gap-5 sm:grid-cols-2"><div><label className="mb-2 block text-sm font-medium">Name</label><Input value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} required /></div><div><label className="mb-2 block text-sm font-medium">Email</label><Input type="email" value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} required /></div></div><div className="mt-5"><label className="mb-2 block text-sm font-medium">Message</label><Textarea rows={5} value={form.message} onChange={(event) => setForm({ ...form, message: event.target.value })} required /></div><Button className="mt-5" type="submit" disabled={sending}><Send className="mr-2 h-4 w-4" />{sending ? "Sending…" : "Send message"}</Button></form>
+  </div></div></section>;
 };
-
 export default Contact;
