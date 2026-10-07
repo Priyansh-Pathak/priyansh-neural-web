@@ -1,2 +1,2 @@
-const Footer = () => <footer className="border-t border-border px-6 py-8"><div className="container mx-auto flex max-w-6xl flex-col justify-between gap-2 text-sm text-muted-foreground sm:flex-row"><p>© {new Date().getFullYear()} Priyansh Pathak</p><p>AI/ML Engineer & Computer Science Student</p></div></footer>;
+const Footer = () => <footer className="border-t border-border px-6 py-8"><div className="container mx-auto flex max-w-6xl flex-col justify-between gap-2 text-sm text-muted-foreground sm:flex-row"><p>© {new Date().getFullYear()} Priyansh Pathak</p><p>AI/ML Engineer · Computer Vision · Deep Learning</p></div></footer>;
 export default Footer;
