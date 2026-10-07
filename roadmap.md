@@ -18,3 +18,11 @@
 - [x] Apply the selected Ocean Deep neural-lattice visual direction across the portfolio
 - [x] Remove “student” from all public-facing portfolio positioning
 - [x] Verify the refreshed desktop and mobile layouts without horizontal overflow
+- [ ] Update hero positioning, availability, and current lab statistic from the supplied brief
+- [ ] Reorder featured projects and link only to verified project repositories
+- [ ] Reorder experience cards and condense earlier roles
+- [ ] Refresh GitHub activity for the new profile, including loading and error states
+- [ ] Align resume actions, contact links, and publication link slots with the brief
+- [ ] Add reduced-motion-aware scroll polish and improve section navigation
+- [ ] Update sharing metadata and provide the requested social preview and sitemap
+- [ ] Verify the rendered portfolio at mobile, tablet, and desktop sizes
