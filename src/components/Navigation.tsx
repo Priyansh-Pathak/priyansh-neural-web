@@ -16,7 +16,7 @@ const Navigation = () => {
 
   return <nav className={`fixed inset-x-0 top-0 z-50 border-b transition-colors ${scrolled || open ? "border-border bg-background/95" : "border-transparent bg-background/80"}`}>
     <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
-      <button onClick={() => move("hero")} className="font-semibold">Priyansh Pathak</button>
+      <Button variant="ghost" onClick={() => move("hero")} className="h-auto gap-3 p-0 font-semibold hover:bg-transparent"><span className="node-mark" />Priyansh Pathak</Button>
       <div className="hidden items-center gap-5 lg:flex">{links.map(([label, id]) => <button key={id} onClick={() => move(id)} className="text-sm text-muted-foreground hover:text-foreground">{label}</button>)}<Button size="sm" variant="outline" onClick={() => navigate("/resume")}>Resume</Button><Button size="icon" variant="ghost" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label="Toggle theme"><Sun className="h-4 w-4 dark:hidden" /><Moon className="hidden h-4 w-4 dark:block" /></Button></div>
       <div className="flex items-center gap-1 lg:hidden"><Button size="icon" variant="ghost" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label="Toggle theme"><Sun className="h-4 w-4 dark:hidden" /><Moon className="hidden h-4 w-4 dark:block" /></Button><Button size="icon" variant="ghost" onClick={() => setOpen(!open)} aria-label="Toggle navigation">{open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</Button></div>
     </div>
