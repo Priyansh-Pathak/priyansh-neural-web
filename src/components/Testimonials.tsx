@@ -21,7 +21,7 @@ const testimonials = [
   {
     role: "Faculty, SRM Institute",
     content:
-      "One of the brightest students in AI/ML. His project work demonstrates a rare combination of theoretical knowledge and practical implementation skills.",
+      "Priyansh stands out in AI/ML. His project work demonstrates a rare combination of theoretical knowledge and practical implementation skills.",
   },
 ];
 

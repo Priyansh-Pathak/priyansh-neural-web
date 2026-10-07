@@ -15,3 +15,6 @@
 - [x] Add concise Education and Achievements sections using verified CV content only
 - [x] Add restrained project actions and persistent resume access across navigation, hero, and contact
 - [x] Use CV_Priyansh-3.pdf as the latest source and resume asset
+- [x] Apply the selected Ocean Deep neural-lattice visual direction across the portfolio
+- [x] Remove “student” from all public-facing portfolio positioning
+- [x] Verify the refreshed desktop and mobile layouts without horizontal overflow
